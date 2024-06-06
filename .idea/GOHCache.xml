@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GoORMHelperCache">
+    <option name="schemaMapping">
+      <map>
+        <entry key="BaseRes">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/share/types/response.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Config">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/share/types/config.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="DeptController">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/pkg/rbac/controller/dept.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="DeptService">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/pkg/rbac/service/dept.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="MenuController">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/pkg/rbac/controller/menu.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="NormalListQuery">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/share/types/request.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="ResponseData">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/pkg/rbac/server/middleware/responseFormat.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="RoleController">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/pkg/rbac/controller/role.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="RoleService">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/pkg/rbac/service/role.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="SysDept">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/share/model/sys_dept.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="SysMenu">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/share/model/sys_menu.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="SysRole">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/share/model/sys_role.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="SysUser">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/share/model/sys_user.go" />
+            </set>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="scannedPathMapping">
+      <map>
+        <entry key="file://$PROJECT_DIR$/cmd/gorm.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714061473575" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/cmd/learn.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714577500972" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/cmd/main.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714061953675" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/blockchains/main.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1716352052331" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/rbac/cmd/main.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714216561869" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/rbac/controller/dept.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714311932899" />
+              <option name="schema">
+                <list>
+                  <option value="DeptController" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/rbac/controller/menu.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714225418167" />
+              <option name="schema">
+                <list>
+                  <option value="MenuController" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/rbac/controller/role.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714225418267" />
+              <option name="schema">
+                <list>
+                  <option value="RoleController" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/rbac/migrate/initEnv.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714398105893" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/rbac/migrate/testEnv.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714398488343" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/rbac/server/index.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714225274317" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/rbac/server/middleware/index.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714227652177" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/rbac/server/middleware/responseFormat.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714228190697" />
+              <option name="schema">
+                <list>
+                  <option value="ResponseData" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/rbac/server/router/dept.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714225417487" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/rbac/server/router/index.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714225266007" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/rbac/server/router/menu.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714225417537" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/rbac/server/router/role.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714225256457" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/rbac/service/dept.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714407463172" />
+              <option name="schema">
+                <list>
+                  <option value="DeptService" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/rbac/service/role.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714312614009" />
+              <option name="schema">
+                <list>
+                  <option value="RoleService" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/constant/http_status.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714060855885" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/core/core.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714210405270" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/initialize/cfg.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714219853978" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/initialize/gin.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714219118738" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/initialize/gorm.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714210405200" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/initialize/log.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714061953815" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/initialize/redis.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714210405240" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/model/sys_dept.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714406116252" />
+              <option name="schema">
+                <list>
+                  <option value="SysDept" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/model/sys_menu.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714406116292" />
+              <option name="schema">
+                <list>
+                  <option value="SysMenu" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/model/sys_role.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714406274152" />
+              <option name="schema">
+                <list>
+                  <option value="SysRole" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/model/sys_user.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714406274122" />
+              <option name="schema">
+                <list>
+                  <option value="SysUser" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/types/config.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714061588305" />
+              <option name="schema">
+                <list>
+                  <option value="Config" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/types/request.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714223199258" />
+              <option name="schema">
+                <list>
+                  <option value="NormalListQuery" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/types/response.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714061094215" />
+              <option name="schema">
+                <list>
+                  <option value="BaseRes" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/utils/md5.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714404508502" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/utils/password.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714404915442" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/utils/random.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1714403097262" />
+            </ScannedPath>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="tableStructMapping">
+      <map>
+        <entry key="base_res" value="BaseRes" />
+        <entry key="config" value="Config" />
+        <entry key="dept_controller" value="DeptController" />
+        <entry key="dept_service" value="DeptService" />
+        <entry key="menu_controller" value="MenuController" />
+        <entry key="normal_list_query" value="NormalListQuery" />
+        <entry key="response_data" value="ResponseData" />
+        <entry key="role_controller" value="RoleController" />
+        <entry key="role_service" value="RoleService" />
+        <entry key="sys_dept" value="SysDept" />
+        <entry key="sys_menu" value="SysMenu" />
+        <entry key="sys_role" value="SysRole" />
+        <entry key="sys_user" value="SysUser" />
+      </map>
+    </option>
+    <option name="lastTimeChecked" value="1717667119321" />
+  </component>
+</project>

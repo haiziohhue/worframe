@@ -1,0 +1,26 @@
+version: '3.9'
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "10080:80"
+      - "10443:443"
+    volumes:
+      - ./data/nginx/logs:/var/log/nginx
+  redis:
+    image: redis:latest
+    ports:
+      - "16379:6379"
+    command: >
+      --requirepass 123456
+    mem_reservation: 512m
+    mem_limit: 1G
+  postgresql:
+    image: postgres:latest
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - POSTGRES_PASSWORD=123456
+    ports:
+      - "15432:5432"
