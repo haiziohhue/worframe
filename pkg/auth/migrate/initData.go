@@ -1,52 +1,34 @@
-package gorm
+package migrate
 
 import (
 	"gorm.io/gorm"
-	"testing"
-	"worframe/share/core"
-	"worframe/share/initialize"
 	"worframe/share/model"
 	"worframe/share/utils"
 )
 
-func TestMigrate(t *testing.T) {
-	core.Cfg = initialize.InitConfig("test")
-	core.DB = initialize.InitGorm(core.Cfg)
-	err := core.DB.Exec("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\"").Error
+func (m *DBMigrate) initTestData() error {
+	err := deptInit(m.db)
 	if err != nil {
-		t.Fatal("failed to create extension")
+		return err
 	}
-	err = core.DB.AutoMigrate(
-		&model.SysUser{},
-		&model.SysDept{},
-		&model.SysMenu{},
-		&model.SysRole{},
-	)
+	err = roleInit(m.db)
 	if err != nil {
-		t.Fatal(err)
+		return err
 	}
-	err = deptInit(core.DB)
+	err = userInit(m.db)
 	if err != nil {
-		t.Fatal(err)
+		return err
 	}
-	err = roleInit(core.DB)
+	err = menuInit(m.db)
 	if err != nil {
-		t.Fatal(err)
+		return err
 	}
-	err = menuInit(core.DB)
+	err = bindInit(m.db)
 	if err != nil {
-		t.Fatal(err)
+		return err
 	}
-	err = userInit(core.DB)
-	if err != nil {
-		t.Fatal(err)
-	}
-	err = bindInit(core.DB)
-	if err != nil {
-		t.Fatal(err)
-	}
+	return nil
 }
-
 func deptInit(db *gorm.DB) error {
 	depts := []*model.SysDept{
 		{Model: gorm.Model{ID: 100},

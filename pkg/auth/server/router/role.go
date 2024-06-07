@@ -2,12 +2,12 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	"worframe/pkg/rbac/controller"
+	"worframe/pkg/auth/controller"
 )
 
 func routerRole(r *gin.Engine) {
 	role := r.Group("/role")
-	ctrl := controller.RoleController{}
+	ctrl := controller.NewRoleController()
 	{
 		role.GET("/:id", ctrl.GetOne)
 		role.GET("", ctrl.GetAll)

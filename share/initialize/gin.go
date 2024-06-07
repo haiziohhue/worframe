@@ -2,14 +2,14 @@ package initialize
 
 import (
 	"github.com/gin-gonic/gin"
-	rbac "worframe/pkg/rbac/server"
+	auth "worframe/pkg/auth/server"
 )
 
 func InitGin(model string) *gin.Engine {
 	engine := gin.New()
 	switch model {
-	case "rbac":
-		rbac.RBACIntiServer(engine)
+	case "auth":
+		auth.AuthInitServer(engine)
 	default:
 		engine.Use(gin.Logger(), gin.Recovery())
 	}

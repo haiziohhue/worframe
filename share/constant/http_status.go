@@ -1,8 +1,11 @@
 package constant
 
 const (
+	//默认错误
 	DEFAULT_ERROR = iota + 40000
+	//参数错误
 	INVALID_PARAMS
+	//
 	INVALID_QUERY
 	INVALID_LOGIN
 	INVALID_TOKEN

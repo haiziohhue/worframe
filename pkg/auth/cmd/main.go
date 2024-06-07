@@ -9,6 +9,6 @@ func main() {
 	core.Cfg = initialize.InitConfig("dev")
 	core.DB = initialize.InitGorm(core.Cfg)
 	core.Redis = initialize.InitRedis(core.Cfg)
-	core.Engine = initialize.InitGin("rbac")
+	core.Engine = initialize.InitGin("auth")
 	_ = core.Engine.Run()
 }
