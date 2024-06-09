@@ -1,4 +1,4 @@
-package gin
+package unit
 
 import (
 	"encoding/json"
@@ -90,8 +90,4 @@ func TestDeptMethod(t *testing.T) {
 		}
 		assert.Equal(t, res.Code, 20000)
 	})
-	//w2 := performRequest(r, http.MethodGet, "/dept/100")
-	//w3 := performRequest(r, http.MethodDelete, "/dept/109")
-	//assert.Equal(t, http.StatusOK, w2.Code)
-	//assert.Equal(t, http.StatusOK, w3.Code)
 }

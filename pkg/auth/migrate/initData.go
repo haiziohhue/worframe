@@ -2,11 +2,12 @@ package migrate
 
 import (
 	"gorm.io/gorm"
+	"worframe/pkg/auth/utils"
 	"worframe/share/model"
-	"worframe/share/utils"
 )
 
 func (m *DBMigrate) initTestData() error {
+
 	err := deptInit(m.db)
 	if err != nil {
 		return err
@@ -15,11 +16,11 @@ func (m *DBMigrate) initTestData() error {
 	if err != nil {
 		return err
 	}
-	err = userInit(m.db)
+	err = menuInit(m.db)
 	if err != nil {
 		return err
 	}
-	err = menuInit(m.db)
+	err = userInit(m.db)
 	if err != nil {
 		return err
 	}
@@ -119,11 +120,13 @@ func deptInit(db *gorm.DB) error {
 func roleInit(db *gorm.DB) error {
 	roles := []model.SysRole{
 		{
+			Model:    gorm.Model{ID: 1},
 			RoleName: "admin",
 			RoleSort: 1,
 			Type:     "1",
 		},
 		{
+			Model:    gorm.Model{ID: 2},
 			RoleName: "default",
 			RoleSort: 2,
 			Type:     "1",
@@ -161,8 +164,8 @@ func menuInit(db *gorm.DB) error {
 }
 func userInit(db *gorm.DB) error {
 	user := []model.SysUser{
-		{DeptId: 103, UserType: "00", UserName: "admin", NickName: "超级管理员"},
-		{DeptId: 105, UserType: "00", UserName: "user_one", NickName: "普通用户"},
+		{Model: gorm.Model{ID: 1}, DeptId: 103, UserType: "00", UserName: "admin", NickName: "超级管理员"},
+		{Model: gorm.Model{ID: 2}, DeptId: 105, UserType: "00", UserName: "user_one", NickName: "普通用户"},
 	}
 	pwd := "123456"
 	user[0].Salt = utils.SaltSpawn()
@@ -172,10 +175,9 @@ func userInit(db *gorm.DB) error {
 	return db.Save(user).Error
 }
 func bindInit(db *gorm.DB) error {
-	roleMenu := []model.SysRole{
+	rm := []model.SysRole{
 		{Model: gorm.Model{ID: 1}, Users: []model.SysUser{{Model: gorm.Model{ID: 1}}}},
-		{
-			Model: gorm.Model{ID: 2},
+		{Model: gorm.Model{ID: 2},
 			Menus: []model.SysMenu{
 				{Model: gorm.Model{ID: 1}},
 				{Model: gorm.Model{ID: 2}},
@@ -209,10 +211,10 @@ func bindInit(db *gorm.DB) error {
 		{Model: gorm.Model{ID: 1}, DeptId: 100},
 		{Model: gorm.Model{ID: 2}, DeptId: 102},
 	}
-	err := db.Save(roleMenu).Error
+	err := db.FirstOrCreate(&rm).Error
 	if err != nil {
 		return err
 	}
-	err = db.Save(userDept).Error
+	err = db.FirstOrCreate(&userDept).Error
 	return err
 }

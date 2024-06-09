@@ -2,14 +2,14 @@ package core
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/redis/go-redis/v9"
+	"github.com/gomodule/redigo/redis"
 	"gorm.io/gorm"
-	"worframe/share/types"
+	"worframe/share/config"
 )
 
 var (
 	DB     *gorm.DB
-	Cfg    *types.Config
-	Redis  *redis.Client
+	Cfg    *config.Config
+	Redis  *redis.Pool
 	Engine *gin.Engine
 )

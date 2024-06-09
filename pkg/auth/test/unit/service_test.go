@@ -4,7 +4,7 @@ import (
 	"github.com/go-playground/assert/v2"
 	"gorm.io/gorm"
 	"testing"
-	"worframe/pkg/rbac/service"
+	"worframe/pkg/auth/service"
 	"worframe/share/model"
 )
 

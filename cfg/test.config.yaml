@@ -1,7 +1,10 @@
-name: Auth
-host: 127.0.0.1
-port: 8080
+server:
+  mode: allow
+  name: Auth
+  host: 127.0.0.1
+  port: 8080
 postgres:
+  debug: true
   host: 127.0.0.1
   user: postgres
   port: 15432
@@ -11,8 +14,15 @@ redis:
   host: 127.0.0.1:6379
   pass: 123456
   db: 0
-server:
-  mode: allow
-  secret: ExpressMongodbNodejsReact
-  bufferTime: 1d
-  expireTime: 7d
+captcha:
+  key-long:
+  img-width:
+  img-height:
+  open-captcha:
+  open-captcha-timeout:
+jwt:
+  signKey:
+  bufferTime:
+  expiresTime:
+casbin:
+  modelName:

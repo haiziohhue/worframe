@@ -10,6 +10,8 @@ func InitGin(model string) *gin.Engine {
 	switch model {
 	case "auth":
 		auth.AuthInitServer(engine)
+	case "mailer":
+	case "files":
 	default:
 		engine.Use(gin.Logger(), gin.Recovery())
 	}
