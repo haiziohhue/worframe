@@ -1,10 +1,5 @@
-server:
-  mode: allow
-  name: Auth
-  host: 127.0.0.1
-  port: 8080
 postgres:
-  debug: false
+  debug: true
   host: 127.0.0.1
   user: postgres
   port: 15432
@@ -14,6 +9,11 @@ redis:
   host: 127.0.0.1:6379
   pass: 123456
   db: 0
+server:
+  mode: allow
+  name: Auth
+  host: 127.0.0.1
+  port: 8080
 captcha:
   key-long:
   img-width:
@@ -21,17 +21,14 @@ captcha:
   open-captcha:
   open-captcha-timeout:
 jwt:
-  signKey:
-  bufferTime:
-  expiresTime:
+  signKey: Js1U5GC0jclCFJHfLCq3LxViIw7U4/4n0i6dT2X2v80=
+  bufferTime: 1d
+  expiresTime: 1d
 casbin:
-  modelName: rbac
+  modelName: rbacWithPattern
 zap:
-  level: debug
-  prefix: '[worframe/test]'
-  format: console
   director: log
-  encode-level: LowercaseColorLevelEncoder
-  stacktrace-key: stacktrace
-  show-line: true
   log-in-console: true
+  max-backups: 10
+  max-size: 10
+  max-age: 28

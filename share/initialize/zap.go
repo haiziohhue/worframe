@@ -22,8 +22,14 @@ func InitZap(c *config.Config) (logger *zap.SugaredLogger) {
 		_ = os.Mkdir(core.WorkDir+c.Zap.Director, os.ModePerm)
 	}
 	logMode := zapcore.DebugLevel
+	var writer zapcore.WriteSyncer
+	if c.Zap.LogInConsole {
+		writer = zapcore.NewMultiWriteSyncer(getWriter(c), zapcore.AddSync(os.Stdout))
+	} else {
+		writer = getWriter(c)
+	}
 
-	zCore := zapcore.NewCore(getEncoder(c), zapcore.NewMultiWriteSyncer(getWriter(c), zapcore.AddSync(os.Stdout)), logMode)
+	zCore := zapcore.NewCore(getEncoder(c), writer, logMode)
 	return zap.New(zCore).Sugar()
 }
 func getEncoder(c *config.Config) zapcore.Encoder {
@@ -37,6 +43,7 @@ func getEncoder(c *config.Config) zapcore.Encoder {
 }
 func getWriter(c *config.Config) zapcore.WriteSyncer {
 	stLogFilePath := filepath.Join(core.WorkDir, c.Zap.Director, time.Now().Format(time.DateOnly)+".log")
+	log.Println("日志路径:", stLogFilePath)
 	lumberSyncer := &lumberjack.Logger{
 		Filename:   stLogFilePath,
 		MaxBackups: c.Zap.MaxBackups,

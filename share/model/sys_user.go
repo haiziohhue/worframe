@@ -20,7 +20,7 @@ type SysUser struct {
 	Remark   string `gorm:"column:remark" json:"remark"`
 	DeptId   int64  `gorm:"column:dept_id;default:0" json:"dept_id"`
 	//Dept     *SysDept
-	Role []SysRole `gorm:"many2many:role_user;" json:"roles"`
+	Role []*SysRole `gorm:"many2many:role_user;" json:"roles"`
 }
 
 // TableName SysUser's table name

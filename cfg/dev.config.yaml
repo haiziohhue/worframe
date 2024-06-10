@@ -6,7 +6,7 @@ postgres:
   pass: 123456
   database: sys_security
 redis:
-  host: 127.0.0.1:6379
+  host: 127.0.0.1:16379
   pass: 123456
   db: 0
 server:
@@ -21,17 +21,14 @@ captcha:
   open-captcha:
   open-captcha-timeout:
 jwt:
-  signKey:
-  bufferTime:
-  expiresTime:
+  signKey: Js1U5GC0jclCFJHfLCq3LxViIw7U4/4n0i6dT2X2v80=
+  bufferTime: 1d
+  expiresTime: 1d
 casbin:
-  modelName: rbac
+  modelName: rbacWithPattern
 zap:
-  level: info
-  prefix: [worframe/test]
-  format: console
   director: log
-  encode-level: LowercaseColorLevelEncoder
-  stacktrace-key: stacktrace
-  show-line: true
   log-in-console: true
+  max-backups: 10
+  max-size: 10
+  max-age: 28

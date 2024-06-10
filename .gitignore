@@ -1,2 +1,6 @@
 deploy/data
 log/
+.idea
+prod.config.yaml
+local.config.yaml
+prod.docker-compose.yaml

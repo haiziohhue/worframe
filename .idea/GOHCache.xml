@@ -340,14 +340,14 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/cmd/main.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718009997747" />
+              <option name="lastModified" value="1718020320511" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/pkg/auth/cmd/migrate.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717764340531" />
+              <option name="lastModified" value="1718027361059" />
             </ScannedPath>
           </value>
         </entry>
@@ -445,7 +445,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/core/casbin.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718011481151" />
+              <option name="lastModified" value="1718019913782" />
               <option name="schema">
                 <list>
                   <option value="CasbinCore" />
@@ -457,7 +457,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/initialize/casbin.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718011654809" />
+              <option name="lastModified" value="1718026597430" />
             </ScannedPath>
           </value>
         </entry>
@@ -471,7 +471,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/migrate/index.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717764339719" />
+              <option name="lastModified" value="1718025662415" />
               <option name="schema">
                 <list>
                   <option value="DBMigrate" />
@@ -483,7 +483,14 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/migrate/initData.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718018908419" />
+              <option name="lastModified" value="1718024495731" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/auth/migrate/initDevData.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1718027937668" />
             </ScannedPath>
           </value>
         </entry>
@@ -505,6 +512,13 @@
                   <option value="roleUser" />
                 </list>
               </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/auth/migrate/initTestData.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1718027954490" />
             </ScannedPath>
           </value>
         </entry>
@@ -577,7 +591,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/service/casbin.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718012505441" />
+              <option name="lastModified" value="1718028875164" />
               <option name="schema">
                 <list>
                   <option value="CasbinService" />
@@ -625,14 +639,14 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/strategy/app.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718018155842" />
+              <option name="lastModified" value="1718019861623" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/pkg/auth/strategy/rbac_with_pattern.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718019582271" />
+              <option name="lastModified" value="1718028591484" />
             </ScannedPath>
           </value>
         </entry>
@@ -767,7 +781,7 @@
         <entry key="file://$PROJECT_DIR$/share/config/zap.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717985172552" />
+              <option name="lastModified" value="1718025700927" />
               <option name="schema">
                 <list>
                   <option value="Zap" />
@@ -793,7 +807,7 @@
         <entry key="file://$PROJECT_DIR$/share/constant/errorText.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718012408635" />
+              <option name="lastModified" value="1718020054143" />
             </ScannedPath>
           </value>
         </entry>
@@ -892,7 +906,7 @@
         <entry key="file://$PROJECT_DIR$/share/initialize/zap.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717986015667" />
+              <option name="lastModified" value="1718025739641" />
             </ScannedPath>
           </value>
         </entry>
@@ -924,7 +938,7 @@
         <entry key="file://$PROJECT_DIR$/share/model/sys_dept.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717677179386" />
+              <option name="lastModified" value="1718027955601" />
               <option name="schema">
                 <list>
                   <option value="SysDept" />
@@ -936,7 +950,7 @@
         <entry key="file://$PROJECT_DIR$/share/model/sys_menu.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718018896132" />
+              <option name="lastModified" value="1718027955854" />
               <option name="schema">
                 <list>
                   <option value="SysMenu" />
@@ -948,7 +962,7 @@
         <entry key="file://$PROJECT_DIR$/share/model/sys_role.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717677179386" />
+              <option name="lastModified" value="1718027955722" />
               <option name="schema">
                 <list>
                   <option value="SysRole" />
@@ -960,7 +974,7 @@
         <entry key="file://$PROJECT_DIR$/share/model/sys_user.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717677179386" />
+              <option name="lastModified" value="1718027907562" />
               <option name="schema">
                 <list>
                   <option value="SysUser" />

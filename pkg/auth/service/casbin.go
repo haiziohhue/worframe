@@ -27,6 +27,10 @@ func NewCasbinService(casbinCore authCore.CasbinCore) CasbinService {
 	}
 }
 func (c *CasbinService) redisUpdateFormPostgres() error {
+	_, err := core.Redis.Get().Do("DEL", "casbin_rules")
+	if err != nil {
+		core.Logger.Warn(err)
+	}
 	return c.Redis.SavePolicy(c.SqlEnforcer.GetModel())
 }
 func (c *CasbinService) postgresUpdateFormSql(db *gorm.DB) error {
@@ -37,6 +41,7 @@ func (c *CasbinService) postgresUpdateFormSql(db *gorm.DB) error {
 	return Strategy(db)
 }
 func (c *CasbinService) postgresCheck() bool {
+	core.Logger.Info("检测Postgres")
 	p := c.SqlEnforcer.GetPolicy()
 	if p == nil {
 		return false
@@ -44,6 +49,7 @@ func (c *CasbinService) postgresCheck() bool {
 	return true
 }
 func (c *CasbinService) redisCheck() bool {
+	core.Logger.Info("检测Redis")
 	p := c.RedisEnforcer.GetPolicy()
 	if p == nil {
 		return false
@@ -67,8 +73,21 @@ func (c *CasbinService) UpdateFlow() error {
 			//todo  后续会做警报措施
 		}
 	}
+
 	return nil
 }
 func (c *CasbinService) CheckFlow() (redisOk, postgresOk bool) {
+	core.Logger.Info("开始检查流程")
 	return c.redisCheck(), c.postgresCheck()
+}
+func (c *CasbinService) SqlUpdateFlow() error {
+	if err := c.postgresUpdateFormSql(core.DB); err != nil {
+		core.Logger.Error(constant.CASBINPOSTGRESUPDATEFIAL)
+		return err
+	}
+	if err := c.redisUpdateFormPostgres(); err != nil {
+		core.Logger.Error(constant.CASBINREDISUPDATEFAIL)
+		return err
+	}
+	return nil
 }

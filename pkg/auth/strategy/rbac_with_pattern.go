@@ -14,7 +14,12 @@ func rbacWithPattern(db *gorm.DB) error {
 	if err := db.Find(&menus).Error; err != nil {
 		core.Logger.Error(err)
 	}
-	if err := db.Find(&roles).Error; err != nil {
+	roleFindBuilder := db.
+		Model(&model.SysRole{}).
+		Preload("Depts").
+		Preload("Menus").
+		Preload("Users")
+	if err := roleFindBuilder.Find(&roles).Error; err != nil {
 		core.Logger.Error(err)
 	}
 
@@ -63,8 +68,16 @@ func rbacWithPattern(db *gorm.DB) error {
 		}
 	}
 	err := db.Transaction(func(tx *gorm.DB) error {
-		tx.Migrator().DropTable(&gormadapter.CasbinRule{}).Error()
-		tx.Create(&rules)
+		err := tx.Migrator().DropTable(&gormadapter.CasbinRule{})
+		if err != nil {
+			core.Logger.Warn(err)
+		}
+		tx.AutoMigrate(&gormadapter.CasbinRule{})
+		err = tx.Save(&rules).Error
+		if err != nil {
+			core.Logger.Error(err)
+			return err
+		}
 		return nil
 	})
 	if err != nil {

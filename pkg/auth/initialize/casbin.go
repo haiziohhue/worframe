@@ -13,17 +13,15 @@ import (
 )
 
 func InitCasbin(c *config.Config, db *gorm.DB, redisPool *redis.Pool) *core.CasbinCore {
-	/*
-		1. redis get看看有没有casbin_rules已经存在
-		2. 如果redis不存在casbin_rules,从postgres数据库拉取
-		3. 如果
-	*/
 	redisAdapt, err := redisadapter.NewAdapterWithPool(redisPool)
 	if err != nil {
 		panic(err)
 	}
 	postgresAdapt, err := gormadapter.NewAdapterByDB(db)
 	model := modelBind(c.Casbin.ModelName)
+	if model == nil {
+		panic("model bind error")
+	}
 	sqlEnforcer, err := casbin.NewEnforcer(model, postgresAdapt)
 	if err != nil {
 		panic(err)
@@ -32,7 +30,6 @@ func InitCasbin(c *config.Config, db *gorm.DB, redisPool *redis.Pool) *core.Casb
 	if err != nil {
 		panic(err)
 	}
-	casbin.NewEnforcer(model, redisAdapt)
 	return &core.CasbinCore{
 		Redis:         redisAdapt,
 		Postgres:      postgresAdapt,
