@@ -7,6 +7,8 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+	"worframe/pkg/auth/config"
+	initialize2 "worframe/pkg/auth/initialize"
 	"worframe/pkg/auth/migrate"
 	"worframe/pkg/auth/server"
 	"worframe/share/core"
@@ -33,12 +35,17 @@ func performRequest(r http.Handler, method, path string, body []byte, headers ..
 
 func TestMain(m *testing.M) {
 	core.Cfg = initialize.InitConfig("test")
+	config.AuthCfg = initialize2.InitAuthConfig("test")
+	core.Logger = initialize.InitZap(core.Cfg)
 	core.DB = initialize.InitGorm(core.Cfg)
+	core.Logger.Debug("hello world")
 	mi := migrate.NewDBMigrate(core.DB)
 	err := mi.TestEnvInit()
 	if err != nil {
 		panic(err)
 	}
+
+	core.Redis = initialize.InitRedis(core.Cfg)
 	r = gin.New()
 	server.AuthInitServer(r)
 	m.Run()

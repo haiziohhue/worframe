@@ -22,12 +22,12 @@ func (ctrl *DeptController) GetAll(c *gin.Context) {
 	q := types.NormalListQuery{}
 	err := c.BindQuery(&q)
 	if err != nil {
-		_ = c.Error(err).SetType(constant.INVALID_QUERY)
+		_ = c.Error(err).SetType(constant.InvalidQuery)
 		return
 	}
 	res, err := ctrl.service.FindAll(q.Page, q.PageSize)
 	if err != nil {
-		_ = c.Error(err).SetType(constant.REQUESTED_RESOURCE_NOT_FOUND)
+		_ = c.Error(err).SetType(constant.RequestedResourceNotFound)
 	}
 	c.Set("response_data", res)
 	c.Next()
@@ -36,12 +36,12 @@ func (ctrl *DeptController) GetOne(c *gin.Context) {
 	var q types.IdParam
 	err := c.ShouldBindUri(&q)
 	if err != nil {
-		_ = c.Error(err).SetType(constant.INVALID_QUERY)
+		_ = c.Error(err).SetType(constant.InvalidQuery)
 		return
 	}
 	res, err := ctrl.service.FindById(q.Id)
 	if err != nil {
-		_ = c.Error(err).SetType(constant.REQUESTED_RESOURCE_NOT_FOUND)
+		_ = c.Error(err).SetType(constant.RequestedResourceNotFound)
 		return
 	}
 	c.Set("response_data", res)
@@ -50,19 +50,19 @@ func (ctrl *DeptController) Update(c *gin.Context) {
 	var dept model.SysDept
 	err := c.BindJSON(&dept)
 	if err != nil {
-		_ = c.Error(err).SetType(constant.INVALID_BODY)
+		_ = c.Error(err).SetType(constant.InvalidBody)
 		return
 	}
 	var q types.IdParam
 	err = c.ShouldBindUri(&q)
 	if err != nil {
-		_ = c.Error(err).SetType(constant.INVALID_QUERY)
+		_ = c.Error(err).SetType(constant.InvalidQuery)
 		return
 	}
 	dept.ID = q.Id
 	err = ctrl.service.Update(&dept)
 	if err != nil {
-		_ = c.Error(err).SetType(constant.REQUESTED_RESOURCE_NOT_FOUND)
+		_ = c.Error(err).SetType(constant.RequestedResourceNotFound)
 		return
 	}
 	c.Set("response_data", nil)
@@ -71,12 +71,12 @@ func (ctrl *DeptController) Delete(c *gin.Context) {
 	var q types.IdParam
 	err := c.ShouldBindUri(&q)
 	if err != nil {
-		_ = c.Error(err).SetType(constant.INVALID_QUERY)
+		_ = c.Error(err).SetType(constant.InvalidQuery)
 		return
 	}
 	err = ctrl.service.Delete(q.Id)
 	if err != nil {
-		_ = c.Error(err).SetType(constant.REQUESTED_RESOURCE_NOT_FOUND)
+		_ = c.Error(err).SetType(constant.RequestedResourceNotFound)
 		return
 	}
 	c.Status(http.StatusOK)
@@ -85,12 +85,12 @@ func (ctrl *DeptController) Create(c *gin.Context) {
 	var dept model.SysDept
 	err := c.BindJSON(&dept)
 	if err != nil {
-		_ = c.Error(err).SetType(constant.INVALID_BODY)
+		_ = c.Error(err).SetType(constant.InvalidBody)
 		return
 	}
 	err = ctrl.service.Create(&dept)
 	if err != nil {
-		_ = c.Error(err).SetType(constant.REQUESTED_RESOURCE_NOT_FOUND)
+		_ = c.Error(err).SetType(constant.RequestedResourceNotFound)
 		return
 	}
 	c.Set("response_data", nil)

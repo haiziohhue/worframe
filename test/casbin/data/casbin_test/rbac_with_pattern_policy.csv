@@ -26,3 +26,38 @@ g2, /pen2/{id}, pen_group
 
 g2, /pen3/:id, pen3_group
 g2, /pen4/:id, pen4_group
+
+
+g,user1,管理者组
+g,user2,人事部门
+g,user3,普通用户
+
+g,人事部门,部门组
+g,人事部门,普通用户
+g,管理者组,角色组
+g,管理者组,权限组
+g,管理者组,部门组
+g,管理者组,普通用户
+g,普通用户,默认权限
+
+p,部门组,/dept,GET
+p,部门组,/dept/:id,GET
+p,部门组,/dept/:id,DELETE
+p,部门组,/dept/:id,PUT
+p,部门组,/dept,POST
+
+p,角色组,/role,GET
+p,角色组,/role/:id,GET
+p,角色组,/role/:id,DELETE
+p,角色组,/role/:id,PUT
+p,角色组,/role,POST
+
+p,权限组,/menu,GET
+p,权限组,/menu/:id,GET
+p,权限组,/menu/:id,DELETE
+p,权限组,/menu/:id,PUT
+p,权限组,/menu,POST
+
+p,默认权限,/menu,GET
+p,默认权限,/role,GET
+p,默认权限,/dept,GET

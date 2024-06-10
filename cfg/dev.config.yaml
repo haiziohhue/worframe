@@ -26,3 +26,12 @@ jwt:
   expiresTime:
 casbin:
   modelName: rbac
+zap:
+  level: info
+  prefix: [worframe/test]
+  format: console
+  director: log
+  encode-level: LowercaseColorLevelEncoder
+  stacktrace-key: stacktrace
+  show-line: true
+  log-in-console: true

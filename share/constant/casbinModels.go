@@ -487,13 +487,12 @@ p = sub, obj, act
 
 [role_definition]
 g = _, _
-g2 = _, _
 
 [policy_effect]
 e = some(where (p.eft == allow))
 
 [matchers]
-m = g(r.sub, p.sub) && g2(r.obj, p.obj) && regexMatch(r.act, p.act)`
+m = g(r.sub, p.sub) && regexMatch(r.act, p.act)`
 const rbacWithResourceRoles = `[request_definition]
 r = sub, obj, act
 

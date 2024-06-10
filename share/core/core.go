@@ -3,6 +3,7 @@ package core
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/gomodule/redigo/redis"
+	"go.uber.org/zap"
 	"gorm.io/gorm"
 	"worframe/share/config"
 )
@@ -12,4 +13,8 @@ var (
 	Cfg    *config.Config
 	Redis  *redis.Pool
 	Engine *gin.Engine
+	Logger *zap.SugaredLogger
+)
+var (
+	WorkDir string
 )

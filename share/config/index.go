@@ -5,4 +5,5 @@ type Config struct {
 	Redis    `yaml:"redis"`
 	Server   `yaml:"server"`
 	Casbin   `yaml:"casbin"`
+	Zap      `yaml:"zap"`
 }

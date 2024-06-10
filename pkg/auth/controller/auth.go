@@ -13,9 +13,9 @@ func (ctrl *AuthController) LoginByPassword(c *gin.Context) {
 	var data types.LoginReqBody
 	err := c.ShouldBindJSON(&data)
 	if err != nil {
-		_ = c.Error(err).SetType(constant.INVALID_BODY)
+		_ = c.Error(err).SetType(constant.InvalidBody)
 	}
-	
+
 }
 func (ctrl *AuthController) LoginByPhone(c *gin.Context) {
 

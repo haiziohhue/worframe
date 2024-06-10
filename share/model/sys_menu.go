@@ -11,7 +11,7 @@ type SysMenu struct {
 	ParentID  int64     `gorm:"column:parent_id" json:"parent_id"`
 	OrderNum  int32     `gorm:"column:order_num" json:"order_num"`
 	URL       string    `gorm:"column:url;default:#" json:"url"`
-	Target    string    `gorm:"column:target" json:"target"`
+	Method    string    `gorm:"column:method" json:"method"`
 	MenuType  string    `gorm:"column:menu_type" json:"menu_type"`
 	Visible   string    `gorm:"column:visible;default:0" json:"visible"`
 	IsRefresh string    `gorm:"column:is_refresh;default:1" json:"is_refresh"`

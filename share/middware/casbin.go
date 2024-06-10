@@ -1,6 +1,7 @@
 package middware
 
 import (
+	"github.com/casbin/casbin/util"
 	"github.com/casbin/casbin/v2"
 	"github.com/casbin/casbin/v2/model"
 	redisadapter "github.com/casbin/redis-adapter/v3"
@@ -18,6 +19,7 @@ func Casbin() gin.HandlerFunc {
 		panic(err)
 	}
 	e, _ := casbin.NewEnforcer(m, redisAdapt)
+	e.AddNamedMatchingFunc("g", "KeyMatch2", util.KeyMatch2)
 	a := &BasicAuthorizer{enforcer: e}
 	return func(c *gin.Context) {
 		if !a.CheckPermission(c) {

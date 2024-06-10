@@ -4,7 +4,7 @@ server:
   host: 127.0.0.1
   port: 8080
 postgres:
-  debug: true
+  debug: false
   host: 127.0.0.1
   user: postgres
   port: 15432
@@ -25,4 +25,13 @@ jwt:
   bufferTime:
   expiresTime:
 casbin:
-  modelName:
+  modelName: rbac
+zap:
+  level: debug
+  prefix: '[worframe/test]'
+  format: console
+  director: log
+  encode-level: LowercaseColorLevelEncoder
+  stacktrace-key: stacktrace
+  show-line: true
+  log-in-console: true
