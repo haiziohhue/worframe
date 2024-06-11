@@ -3,19 +3,14 @@ package unit
 import (
 	"bytes"
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"net/http/httptest"
 	"testing"
-	"worframe/pkg/auth/config"
-	initialize2 "worframe/pkg/auth/initialize"
-	"worframe/pkg/auth/migrate"
-	"worframe/pkg/auth/server"
+	authCore "worframe/pkg/auth/core"
 	"worframe/share/core"
-	"worframe/share/initialize"
 )
 
-var r *gin.Engine
+var testApp *authCore.AuthCore
 
 type header struct {
 	Key   string
@@ -34,20 +29,19 @@ func performRequest(r http.Handler, method, path string, body []byte, headers ..
 }
 
 func TestMain(m *testing.M) {
-	core.Cfg = initialize.InitConfig("test")
-	config.AuthCfg = initialize2.InitAuthConfig("test")
-	core.Logger = initialize.InitZap(core.Cfg)
-	core.DB = initialize.InitGorm(core.Cfg)
-	core.Logger.Debug("hello world")
-	mi := migrate.NewDBMigrate(core.DB)
-	err := mi.TestEnvInit()
-	if err != nil {
-		panic(err)
+	shareApp := core.
+		NewApp("test").InitZap().InitDb().InitRedis()
+
+	if shareApp.Error != nil {
+		panic(shareApp.Error)
+	}
+	testApp = authCore.
+		NewAuthCore(shareApp).InitEngine()
+
+	if testApp.Error != nil {
+		panic(testApp.Error)
 	}
 
-	core.Redis = initialize.InitRedis(core.Cfg)
-	r = gin.New()
-	server.AuthInitServer(r)
 	m.Run()
 }
 func TestExample(t *testing.T) {

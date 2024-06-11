@@ -1,15 +1,23 @@
 package service
 
 import (
-	"worframe/share/core"
+	"go.uber.org/zap"
+	"gorm.io/gorm"
 	"worframe/share/model"
 )
 
-type MenuService struct{}
+type MenuService struct {
+	Logger *zap.Logger
+	DB     *gorm.DB
+}
 
+func NewMenuService(zap *zap.Logger, db *gorm.DB) *MenuService {
+	return &MenuService{Logger: zap,
+		DB: db}
+}
 func (s *MenuService) FindAll(page, pageSize int) ([]*model.SysMenu, error) {
 	var res []*model.SysMenu
-	err := core.DB.Limit(pageSize).Offset((page - 1) * pageSize).Find(&res).Error
+	err := s.DB.Limit(pageSize).Offset((page - 1) * pageSize).Find(&res).Error
 	if err != nil {
 		return nil, err
 	}
@@ -17,18 +25,18 @@ func (s *MenuService) FindAll(page, pageSize int) ([]*model.SysMenu, error) {
 }
 func (s *MenuService) FindById(id uint) (*model.SysMenu, error) {
 	var res *model.SysMenu
-	err := core.DB.Where(id).First(&res).Error
+	err := s.DB.Where(id).First(&res).Error
 	if err != nil {
 		return nil, err
 	}
 	return res, nil
 }
 func (s *MenuService) Create(menu *model.SysMenu) error {
-	return core.DB.Create(&menu).Error
+	return s.DB.Create(&menu).Error
 }
 func (s *MenuService) Update(menu *model.SysMenu) error {
-	return core.DB.Updates(&menu).Error
+	return s.DB.Updates(&menu).Error
 }
 func (s *MenuService) Delete(id uint) error {
-	return core.DB.Where(id).Delete(&model.SysMenu{}).Error
+	return s.DB.Where(id).Delete(&model.SysMenu{}).Error
 }

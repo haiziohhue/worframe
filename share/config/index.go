@@ -6,4 +6,5 @@ type Config struct {
 	Server   `yaml:"server"`
 	Casbin   `yaml:"casbin"`
 	Zap      `yaml:"zap"`
+	Jwt      `yaml:"jwt"`
 }

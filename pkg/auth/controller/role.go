@@ -2,6 +2,8 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
+	"gorm.io/gorm"
 	"net/http"
 	"worframe/pkg/auth/service"
 	"worframe/share/constant"
@@ -10,12 +12,15 @@ import (
 )
 
 type RoleController struct {
-	service service.RoleService
+	service *service.RoleService
 }
 
-func NewRoleController() *RoleController {
-	return &RoleController{service: service.RoleService{}}
+func NewRoleController(zap *zap.Logger, db *gorm.DB) *RoleController {
+	return &RoleController{
+		service: service.NewRoleService(zap, db),
+	}
 }
+
 func (ctrl *RoleController) GetAll(c *gin.Context) {
 	q := types.NormalListQuery{}
 	err := c.BindQuery(&q)

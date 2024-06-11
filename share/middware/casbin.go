@@ -7,14 +7,14 @@ import (
 	redisadapter "github.com/casbin/redis-adapter/v3"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"worframe/pkg/auth/utils"
 	"worframe/share/constant"
 	"worframe/share/core"
+	shareUtils "worframe/share/utils"
 )
 
-func Casbin() gin.HandlerFunc {
-	m := modelBind(core.Cfg.Casbin.ModelName)
-	redisAdapt, err := redisadapter.NewAdapterWithPool(core.Redis)
+func Casbin(app *core.ShareApp) gin.HandlerFunc {
+	m := modelBind(app.Conf.Casbin.ModelName)
+	redisAdapt, err := redisadapter.NewAdapterWithPool(app.Redis)
 	if err != nil {
 		panic(err)
 	}
@@ -48,7 +48,7 @@ type BasicAuthorizer struct {
 }
 
 func (a *BasicAuthorizer) CheckPermission(c *gin.Context) bool {
-	perm := utils.GetUserPerm(c)
+	perm := shareUtils.GetUserPerm(c)
 	method := c.Request.Method
 	path := c.Request.URL.Path
 	for _, sub := range perm {

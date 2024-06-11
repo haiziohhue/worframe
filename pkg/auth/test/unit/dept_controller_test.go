@@ -2,41 +2,35 @@ package unit
 
 import (
 	"encoding/json"
-	"github.com/gin-gonic/gin"
 	"github.com/go-playground/assert/v2"
 	"net/http"
 	"testing"
 	"worframe/pkg/auth/migrate"
-	"worframe/pkg/auth/server"
-	"worframe/share/core"
-	"worframe/share/initialize"
 	"worframe/share/model"
 	"worframe/share/types"
 )
 
 func TestDeptMethod(t *testing.T) {
-	core.Cfg = initialize.InitConfig("test")
-	core.DB = initialize.InitGorm(core.Cfg)
-	m := migrate.NewDBMigrate(core.DB)
-	err := m.TestEnvInit()
+
+	mi := migrate.NewDBMigrate(testApp.DB)
+	err := mi.TestEnvInit(testApp.Logger)
 	if err != nil {
-		t.Fatal(err)
+		panic(err)
 	}
-	r := gin.New()
-	server.AuthInitServer(r)
+
 	t.Run("deptGetOne", func(t *testing.T) {
-		w := performRequest(r, http.MethodGet, "/dept/100", nil)
+		w := performRequest(testApp.Engine, http.MethodGet, "/dept/1", nil)
 		var res types.BaseRes[model.SysDept]
-		err = json.Unmarshal(w.Body.Bytes(), &res)
+		err := json.Unmarshal(w.Body.Bytes(), &res)
 		if err != nil {
 			t.Fatal(err)
 		}
-		assert.Equal(t, res.Data.ID, uint(100))
+		assert.Equal(t, res.Data.ID, uint(1))
 	})
 	t.Run("deptGetOneNotFound", func(t *testing.T) {
-		w := performRequest(r, http.MethodGet, "/dept/200", nil)
+		w := performRequest(testApp.Engine, http.MethodGet, "/dept/200", nil)
 		var res types.BaseRes[model.SysDept]
-		err = json.Unmarshal(w.Body.Bytes(), &res)
+		err := json.Unmarshal(w.Body.Bytes(), &res)
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -53,10 +47,10 @@ func TestDeptMethod(t *testing.T) {
 			Email:     "test@test.com",
 		}
 		deptBytes, _ := json.Marshal(dept)
-		w := performRequest(r, http.MethodPost, "/dept", deptBytes)
+		w := performRequest(testApp.Engine, http.MethodPost, "/dept", deptBytes)
 		var res types.EmptyRes
 
-		err = json.Unmarshal(w.Body.Bytes(), &res)
+		err := json.Unmarshal(w.Body.Bytes(), &res)
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -68,9 +62,9 @@ func TestDeptMethod(t *testing.T) {
 		}
 		deptBytes, _ := json.Marshal(dept)
 
-		w := performRequest(r, http.MethodPut, "/dept/101", deptBytes)
+		w := performRequest(testApp.Engine, http.MethodPut, "/dept/3", deptBytes)
 		var res types.EmptyRes
-		err = json.Unmarshal(w.Body.Bytes(), &res)
+		err := json.Unmarshal(w.Body.Bytes(), &res)
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -82,9 +76,9 @@ func TestDeptMethod(t *testing.T) {
 		}
 		deptBytes, _ := json.Marshal(dept)
 
-		w := performRequest(r, http.MethodDelete, "/dept/102", deptBytes)
+		w := performRequest(testApp.Engine, http.MethodDelete, "/dept/4", deptBytes)
 		var res types.EmptyRes
-		err = json.Unmarshal(w.Body.Bytes(), &res)
+		err := json.Unmarshal(w.Body.Bytes(), &res)
 		if err != nil {
 			t.Fatal(err)
 		}

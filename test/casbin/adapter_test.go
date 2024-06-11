@@ -360,10 +360,10 @@ func arrayEqualsWithoutOrder(a [][]string, b [][]string) bool {
 
 func TestAdapters(t *testing.T) {
 	a, _ := redisadapter.NewAdapterWithPassword("tcp", "127.0.0.1:16379", "123456")
-	// Use the following if Redis has password like "123"
+	// Use the following if redis has password like "123"
 	// a, err := NewAdapterWithPassword("tcp", "127.0.0.1:6379", "123")
 
-	// Use the following if you use Redis with a account
+	// Use the following if you use redis with a account
 	// a, err := NewAdapterWithUser("tcp", "127.0.0.1:6379", "testaccount", "userpass")
 	testSaveLoad(t, a)
 	testAutoSave(t, a)

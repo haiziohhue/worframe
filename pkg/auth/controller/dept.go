@@ -2,6 +2,8 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
+	"gorm.io/gorm"
 	"net/http"
 	"worframe/pkg/auth/service"
 	"worframe/share/constant"
@@ -10,12 +12,12 @@ import (
 )
 
 type DeptController struct {
-	service service.DeptService
+	service *service.DeptService
 }
 
-func NewDeptController() *DeptController {
+func NewDeptController(zap *zap.Logger, db *gorm.DB) *DeptController {
 	return &DeptController{
-		service: service.DeptService{},
+		service: service.NewDeptService(zap, db),
 	}
 }
 func (ctrl *DeptController) GetAll(c *gin.Context) {

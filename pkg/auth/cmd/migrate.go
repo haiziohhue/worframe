@@ -2,27 +2,29 @@ package main
 
 import (
 	authCore "worframe/pkg/auth/core"
-	initialize2 "worframe/pkg/auth/initialize"
 	"worframe/pkg/auth/migrate"
 	"worframe/pkg/auth/service"
 	"worframe/share/core"
-	"worframe/share/initialize"
 )
 
 func main() {
-	core.Cfg = initialize.InitConfig("dev")
-	core.Logger = initialize.InitZap(core.Cfg)
-	core.DB = initialize.InitGorm(core.Cfg)
-	core.Redis = initialize.InitRedis(core.Cfg)
 
-	m := migrate.NewDBMigrate(core.DB)
-	_ = m.DevEnvInit()
+	shareApp := core.
+		NewApp("dev").
+		InitPublicZap().
+		InitDb().
+		InitRedis()
 
-	authCore.Casbin = initialize2.InitCasbin(core.Cfg, core.DB, core.Redis)
-	cs := service.NewCasbinService(*authCore.Casbin)
-	err := cs.SqlUpdateFlow()
+	app := authCore.
+		NewAuthCore(shareApp)
+
+	m := migrate.NewDBMigrate(app.DB)
+
+	cs := service.NewCasbinService(service.NewCasbinCore(app.Conf.Casbin, app.Logger, app.Redis, app.DB))
+	err := cs.SqlUpdateFlow(app.DB)
 	if err != nil {
 		panic(err)
 	}
+	_ = m.DevEnvInit(shareApp.Logger)
 	return
 }

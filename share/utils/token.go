@@ -6,12 +6,11 @@ import (
 	jwt "github.com/golang-jwt/jwt/v4"
 	"golang.org/x/sync/singleflight"
 	"time"
-	"worframe/pkg/auth/config"
-	"worframe/share/core"
-	"worframe/share/utils"
+	"worframe/share/config"
 )
 
 type JWT struct {
+	config.Jwt
 }
 type BaseClaims struct {
 	UUID     uuid.UUID `json:"uuid"`
@@ -26,6 +25,10 @@ type CustomClaims struct {
 	BufferTime int64
 }
 
+func NewJWT(conf config.Jwt) *JWT {
+	return &JWT{conf}
+}
+
 var (
 	TokenExpired     = errors.New("token is expired")
 	TokenNotValidYet = errors.New("token not active yet")
@@ -34,15 +37,14 @@ var (
 )
 
 func (j *JWT) CreateClaims(baseClaims BaseClaims) CustomClaims {
-	bf, _ := utils.ParseDuration(config.AuthCfg.BufferTime)
-	ep, _ := utils.ParseDuration(config.AuthCfg.ExpiresTime)
+	bf, _ := ParseDuration(j.BufferTime)
+	ep, _ := ParseDuration(j.ExpiresTime)
 	claims := CustomClaims{
 		BaseClaims: baseClaims,
 		BufferTime: int64(bf / time.Second), // 缓冲时间1天 缓冲时间内会获得新的token刷新令牌 此时一个用户会存在两个有效令牌 但是前端只留一个 另一个会丢失
 		RegisteredClaims: jwt.RegisteredClaims{
 			NotBefore: jwt.NewNumericDate(time.Now().Add(-1000)), // 签名生效时间
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(ep)),    // 过期时间 7天  配置文件
-			Issuer:    core.Cfg.Name,                             // 签名的发行者
 		},
 	}
 	return claims
@@ -50,7 +52,7 @@ func (j *JWT) CreateClaims(baseClaims BaseClaims) CustomClaims {
 
 func (j *JWT) CreateToken(claims jwt.Claims) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
-	return token.SignedString(config.AuthCfg.SignKey)
+	return token.SignedString(j.SignKey)
 }
 
 // CreateTokenByOldToken 旧token 换新token 使用归并回源避免并发问题
@@ -65,7 +67,7 @@ func (j *JWT) CreateTokenByOldToken(oldToken string, claims CustomClaims) (strin
 func (j *JWT) ParseToken(tokenString string) (*CustomClaims, error) {
 
 	token, err := jwt.ParseWithClaims(tokenString, CustomClaims{}, func(token *jwt.Token) (i interface{}, e error) {
-		return config.AuthCfg.SignKey, nil
+		return j.SignKey, nil
 	})
 	if err != nil {
 		if ve, ok := err.(*jwt.ValidationError); ok {

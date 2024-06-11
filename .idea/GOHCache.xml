@@ -10,6 +10,13 @@
             </set>
           </value>
         </entry>
+        <entry key="AuthCore">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/pkg/auth/core/core.go" />
+            </set>
+          </value>
+        </entry>
         <entry key="AuthPackConfig">
           <value>
             <set>
@@ -28,6 +35,7 @@
           <value>
             <set>
               <option value="file://$PROJECT_DIR$/pkg/auth/utils/token.go" />
+              <option value="file://$PROJECT_DIR$/share/utils/token.go" />
             </set>
           </value>
         </entry>
@@ -63,7 +71,7 @@
           <value>
             <set>
               <option value="file://$PROJECT_DIR$/pkg/auth/core/casbin.go" />
-              <option value="file://$PROJECT_DIR$/pkg/auth/initialize/casbin.go" />
+              <option value="file://$PROJECT_DIR$/pkg/auth/service/casbin.go" />
             </set>
           </value>
         </entry>
@@ -81,24 +89,11 @@
             </set>
           </value>
         </entry>
-        <entry key="Consumer">
-          <value>
-            <set>
-              <option value="file://$PROJECT_DIR$/pkg/queue/customer/customer.go" />
-            </set>
-          </value>
-        </entry>
         <entry key="CustomClaims">
           <value>
             <set>
               <option value="file://$PROJECT_DIR$/pkg/auth/utils/token.go" />
-            </set>
-          </value>
-        </entry>
-        <entry key="Cutter">
-          <value>
-            <set>
-              <option value="file://$PROJECT_DIR$/share/core/inter/cutter.go" />
+              <option value="file://$PROJECT_DIR$/share/utils/token.go" />
             </set>
           </value>
         </entry>
@@ -141,6 +136,7 @@
           <value>
             <set>
               <option value="file://$PROJECT_DIR$/pkg/auth/utils/token.go" />
+              <option value="file://$PROJECT_DIR$/share/utils/token.go" />
             </set>
           </value>
         </entry>
@@ -148,6 +144,7 @@
           <value>
             <set>
               <option value="file://$PROJECT_DIR$/pkg/auth/config/jwt.go" />
+              <option value="file://$PROJECT_DIR$/share/config/jwt.go" />
             </set>
           </value>
         </entry>
@@ -211,6 +208,7 @@
           <value>
             <set>
               <option value="file://$PROJECT_DIR$/share/initialize/kafka.go" />
+              <option value="file://$PROJECT_DIR$/share/kafka/kafka.go" />
             </set>
           </value>
         </entry>
@@ -249,6 +247,13 @@
             </set>
           </value>
         </entry>
+        <entry key="ShareApp">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/share/core/core.go" />
+            </set>
+          </value>
+        </entry>
         <entry key="SysDept">
           <value>
             <set>
@@ -284,24 +289,10 @@
             </set>
           </value>
         </entry>
-        <entry key="ZapCore">
+        <entry key="app">
           <value>
             <set>
-              <option value="file://$PROJECT_DIR$/share/core/inter/zap.go" />
-            </set>
-          </value>
-        </entry>
-        <entry key="cas">
-          <value>
-            <set>
-              <option value="file://$PROJECT_DIR$/test/casbin/casbin_test.go" />
-            </set>
-          </value>
-        </entry>
-        <entry key="casbin">
-          <value>
-            <set>
-              <option value="file://$PROJECT_DIR$/pkg/auth/core/casbin.go" />
+              <option value="file://$PROJECT_DIR$/share/core/core.go" />
             </set>
           </value>
         </entry>
@@ -340,14 +331,14 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/cmd/main.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718020320511" />
+              <option name="lastModified" value="1718117046770" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/pkg/auth/cmd/migrate.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718027361059" />
+              <option name="lastModified" value="1718117046727" />
             </ScannedPath>
           </value>
         </entry>
@@ -366,7 +357,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/config/index.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717922028832" />
+              <option name="lastModified" value="1718114785217" />
               <option name="schema">
                 <list>
                   <option value="AuthPackConfig" />
@@ -402,7 +393,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/controller/dept.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717938742748" />
+              <option name="lastModified" value="1718114786495" />
               <option name="schema">
                 <list>
                   <option value="DeptController" />
@@ -414,7 +405,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/controller/menu.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717938742727" />
+              <option name="lastModified" value="1718114785770" />
               <option name="schema">
                 <list>
                   <option value="MenuController" />
@@ -426,7 +417,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/controller/role.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717938742824" />
+              <option name="lastModified" value="1718115121306" />
               <option name="schema">
                 <list>
                   <option value="RoleController" />
@@ -445,7 +436,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/core/casbin.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718019913782" />
+              <option name="lastModified" value="1718114785109" />
               <option name="schema">
                 <list>
                   <option value="CasbinCore" />
@@ -454,10 +445,43 @@
             </ScannedPath>
           </value>
         </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/auth/core/conf.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1718107135241" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/auth/core/core.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1718115470717" />
+              <option name="schema">
+                <list>
+                  <option value="AuthCore" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/auth/core/engine.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1718116249077" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/auth/core/initalize/conf.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1718103879111" />
+            </ScannedPath>
+          </value>
+        </entry>
         <entry key="file://$PROJECT_DIR$/pkg/auth/initialize/casbin.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718026597430" />
+              <option name="lastModified" value="1718103974497" />
             </ScannedPath>
           </value>
         </entry>
@@ -468,22 +492,22 @@
             </ScannedPath>
           </value>
         </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/auth/initialize/gin.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1718097387949" />
+            </ScannedPath>
+          </value>
+        </entry>
         <entry key="file://$PROJECT_DIR$/pkg/auth/migrate/index.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718025662415" />
+              <option name="lastModified" value="1718105499304" />
               <option name="schema">
                 <list>
                   <option value="DBMigrate" />
                 </list>
               </option>
-            </ScannedPath>
-          </value>
-        </entry>
-        <entry key="file://$PROJECT_DIR$/pkg/auth/migrate/initData.go">
-          <value>
-            <ScannedPath>
-              <option name="lastModified" value="1718024495731" />
             </ScannedPath>
           </value>
         </entry>
@@ -525,14 +549,14 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/server/index.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717680238149" />
+              <option name="lastModified" value="1718116688591" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/pkg/auth/server/middleware/index.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717985172512" />
+              <option name="lastModified" value="1718106763831" />
             </ScannedPath>
           </value>
         </entry>
@@ -551,7 +575,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/server/router/dept.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717764142358" />
+              <option name="lastModified" value="1718115080060" />
             </ScannedPath>
           </value>
         </entry>
@@ -565,21 +589,21 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/server/router/menu.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717764142521" />
+              <option name="lastModified" value="1718115080266" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/pkg/auth/server/router/role.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717764142748" />
+              <option name="lastModified" value="1718115080158" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/pkg/auth/service/auth.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717857501570" />
+              <option name="lastModified" value="1718107151623" />
               <option name="schema">
                 <list>
                   <option value="AuthService" />
@@ -591,9 +615,10 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/service/casbin.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718028875164" />
+              <option name="lastModified" value="1718116227003" />
               <option name="schema">
                 <list>
+                  <option value="CasbinCore" />
                   <option value="CasbinService" />
                 </list>
               </option>
@@ -603,7 +628,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/service/dept.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717764142596" />
+              <option name="lastModified" value="1718114785596" />
               <option name="schema">
                 <list>
                   <option value="DeptService" />
@@ -615,7 +640,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/service/menu.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717763817656" />
+              <option name="lastModified" value="1718114787871" />
               <option name="schema">
                 <list>
                   <option value="MenuService" />
@@ -627,7 +652,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/service/role.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717763935411" />
+              <option name="lastModified" value="1718114503273" />
               <option name="schema">
                 <list>
                   <option value="RoleService" />
@@ -639,26 +664,40 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/strategy/app.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718019861623" />
+              <option name="lastModified" value="1718099358155" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/pkg/auth/strategy/rbac_with_pattern.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718028591484" />
+              <option name="lastModified" value="1718099337768" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/auth/test/unit/dept_controller_test.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1718114785185" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/pkg/auth/test/unit/main_test.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717985304188" />
+              <option name="lastModified" value="1718108377060" />
               <option name="schema">
                 <list>
                   <option value="header" />
                 </list>
               </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/auth/test/unit/service_test.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1718114787546" />
             </ScannedPath>
           </value>
         </entry>
@@ -679,7 +718,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/utils/token.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717920291690" />
+              <option name="lastModified" value="1718107501126" />
               <option name="schema">
                 <list>
                   <option value="JWT" />
@@ -733,10 +772,22 @@
         <entry key="file://$PROJECT_DIR$/share/config/index.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717938986233" />
+              <option name="lastModified" value="1718108434446" />
               <option name="schema">
                 <list>
                   <option value="Config" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/config/jwt.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1717919951139" />
+              <option name="schema">
+                <list>
+                  <option value="Jwt" />
                 </list>
               </option>
             </ScannedPath>
@@ -818,41 +869,43 @@
             </ScannedPath>
           </value>
         </entry>
-        <entry key="file://$PROJECT_DIR$/share/constant/http_status.go">
+        <entry key="file://$PROJECT_DIR$/share/core/cfg.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717938742716" />
+              <option name="lastModified" value="1718107276620" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/share/core/core.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717985172492" />
-            </ScannedPath>
-          </value>
-        </entry>
-        <entry key="file://$PROJECT_DIR$/share/core/inter/cutter.go">
-          <value>
-            <ScannedPath>
-              <option name="lastModified" value="1717939839142" />
+              <option name="lastModified" value="1718117046868" />
               <option name="schema">
                 <list>
-                  <option value="Cutter" />
+                  <option value="ShareApp" />
                 </list>
               </option>
             </ScannedPath>
           </value>
         </entry>
-        <entry key="file://$PROJECT_DIR$/share/core/inter/zap.go">
+        <entry key="file://$PROJECT_DIR$/share/core/gorm.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717942092045" />
-              <option name="schema">
-                <list>
-                  <option value="ZapCore" />
-                </list>
-              </option>
+              <option name="lastModified" value="1718107150193" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/core/logger.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1718117073635" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/share/core/redis.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1718106180005" />
             </ScannedPath>
           </value>
         </entry>
@@ -889,13 +942,6 @@
             </ScannedPath>
           </value>
         </entry>
-        <entry key="file://$PROJECT_DIR$/share/initialize/log.go">
-          <value>
-            <ScannedPath>
-              <option name="lastModified" value="1717985235035" />
-            </ScannedPath>
-          </value>
-        </entry>
         <entry key="file://$PROJECT_DIR$/share/initialize/redis.go">
           <value>
             <ScannedPath>
@@ -910,10 +956,22 @@
             </ScannedPath>
           </value>
         </entry>
+        <entry key="file://$PROJECT_DIR$/share/kafka/kafka.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1718116227025" />
+              <option name="schema">
+                <list>
+                  <option value="Producer" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
         <entry key="file://$PROJECT_DIR$/share/middware/casbin.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718006397872" />
+              <option name="lastModified" value="1718114902274" />
               <option name="schema">
                 <list>
                   <option value="BasicAuthorizer" />
@@ -1022,6 +1080,13 @@
             </ScannedPath>
           </value>
         </entry>
+        <entry key="file://$PROJECT_DIR$/share/utils/clamis.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1717920896121" />
+            </ScannedPath>
+          </value>
+        </entry>
         <entry key="file://$PROJECT_DIR$/share/utils/directory.go">
           <value>
             <ScannedPath>
@@ -1057,36 +1122,24 @@
             </ScannedPath>
           </value>
         </entry>
-        <entry key="file://$PROJECT_DIR$/test/casbin/adapter_test.go">
+        <entry key="file://$PROJECT_DIR$/share/utils/token.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717996545400" />
-            </ScannedPath>
-          </value>
-        </entry>
-        <entry key="file://$PROJECT_DIR$/test/casbin/casbin_test.go">
-          <value>
-            <ScannedPath>
-              <option name="lastModified" value="1718003423749" />
+              <option name="lastModified" value="1718108697888" />
               <option name="schema">
                 <list>
-                  <option value="cas" />
+                  <option value="JWT" />
+                  <option value="BaseClaims" />
+                  <option value="CustomClaims" />
                 </list>
               </option>
             </ScannedPath>
           </value>
         </entry>
-        <entry key="file://$PROJECT_DIR$/test/kafka_test.go">
+        <entry key="file://$PROJECT_DIR$/test/casbin/adapter_test.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1717988781646" />
-            </ScannedPath>
-          </value>
-        </entry>
-        <entry key="file://$PROJECT_DIR$/test/kafkatest.go">
-          <value>
-            <ScannedPath>
-              <option name="lastModified" value="1717988699958" />
+              <option name="lastModified" value="1718116227058" />
             </ScannedPath>
           </value>
         </entry>
@@ -1095,19 +1148,18 @@
     <option name="tableStructMapping">
       <map>
         <entry key="auth_controller" value="AuthController" />
+        <entry key="auth_core" value="AuthCore" />
         <entry key="auth_pack_config" value="AuthPackConfig" />
         <entry key="auth_service" value="AuthService" />
         <entry key="base_claims" value="BaseClaims" />
         <entry key="base_res" value="BaseRes" />
         <entry key="basic_authorizer" value="BasicAuthorizer" />
         <entry key="captcha" value="Captcha" />
-        <entry key="cas" value="cas" />
+        <entry key="casbin" value="Casbin" />
         <entry key="casbin_core" value="CasbinCore" />
         <entry key="casbin_service" value="CasbinService" />
         <entry key="config" value="Config" />
-        <entry key="consumer" value="Consumer" />
         <entry key="custom_claims" value="CustomClaims" />
-        <entry key="cutter" value="Cutter" />
         <entry key="db_migrate" value="DBMigrate" />
         <entry key="dept_controller" value="DeptController" />
         <entry key="dept_service" value="DeptService" />
@@ -1132,14 +1184,14 @@
         <entry key="role_service" value="RoleService" />
         <entry key="role_user" value="roleUser" />
         <entry key="server" value="Server" />
+        <entry key="share_app" value="ShareApp" />
         <entry key="sys_dept" value="SysDept" />
         <entry key="sys_menu" value="SysMenu" />
         <entry key="sys_role" value="SysRole" />
         <entry key="sys_user" value="SysUser" />
         <entry key="zap" value="Zap" />
-        <entry key="zap_core" value="ZapCore" />
       </map>
     </option>
-    <option name="lastTimeChecked" value="1717982399787" />
+    <option name="lastTimeChecked" value="1718096179094" />
   </component>
 </project>

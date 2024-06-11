@@ -1,4 +1,4 @@
-package initialize
+package core
 
 import (
 	"fmt"
@@ -6,18 +6,11 @@ import (
 	"os"
 	"path/filepath"
 	"worframe/share/config"
-	"worframe/share/core"
-	"worframe/share/utils"
 )
 
-func InitConfig(env string) *config.Config {
-	workdir, err := utils.FindWorkDir()
-	if err != nil {
-		panic(err)
-	}
-	core.WorkDir = workdir
+func initConfig(env, dir string) *config.Config {
 	configFileName := fmt.Sprintf("%s.config.yaml", env)
-	configFilePath := filepath.Join(core.WorkDir, "cfg", configFileName)
+	configFilePath := filepath.Join(dir, "cfg", configFileName)
 
 	data, err := os.ReadFile(configFilePath)
 	if err != nil {

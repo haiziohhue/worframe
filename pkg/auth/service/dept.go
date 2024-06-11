@@ -1,15 +1,25 @@
 package service
 
 import (
-	"worframe/share/core"
+	"go.uber.org/zap"
+	"gorm.io/gorm"
 	"worframe/share/model"
 )
 
-type DeptService struct{}
+type DeptService struct {
+	Logger *zap.Logger
+	DB     *gorm.DB
+}
 
+func NewDeptService(zap *zap.Logger, db *gorm.DB) *DeptService {
+	return &DeptService{
+		Logger: zap,
+		DB:     db,
+	}
+}
 func (s *DeptService) FindAll(page, pageSize int) ([]*model.SysDept, error) {
 	var res []*model.SysDept
-	err := core.DB.Limit(pageSize).Offset((page - 1) * pageSize).Find(&res).Error
+	err := s.DB.Limit(pageSize).Offset((page - 1) * pageSize).Find(&res).Error
 	if err != nil {
 		return nil, err
 	}
@@ -17,18 +27,18 @@ func (s *DeptService) FindAll(page, pageSize int) ([]*model.SysDept, error) {
 }
 func (s *DeptService) FindById(id uint) (*model.SysDept, error) {
 	var res *model.SysDept
-	err := core.DB.Where(id).First(&res).Error
+	err := s.DB.Where(id).First(&res).Error
 	if err != nil {
 		return nil, err
 	}
 	return res, nil
 }
 func (s *DeptService) Create(dept *model.SysDept) error {
-	return core.DB.Create(&dept).Error
+	return s.DB.Create(&dept).Error
 }
 func (s *DeptService) Update(dept *model.SysDept) error {
-	return core.DB.Updates(&dept).Error
+	return s.DB.Updates(&dept).Error
 }
 func (s *DeptService) Delete(id uint) error {
-	return core.DB.Where(id).Delete(&model.SysDept{}).Error
+	return s.DB.Where(id).Delete(&model.SysDept{}).Error
 }

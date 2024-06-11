@@ -1,15 +1,23 @@
 package service
 
 import (
-	"worframe/share/core"
+	"go.uber.org/zap"
+	"gorm.io/gorm"
 	"worframe/share/model"
 )
 
-type RoleService struct{}
+type RoleService struct {
+	Logger *zap.Logger
+	DB     *gorm.DB
+}
 
+func NewRoleService(zap *zap.Logger, db *gorm.DB) *RoleService {
+	return &RoleService{Logger: zap,
+		DB: db}
+}
 func (s *RoleService) FindAll(page, pageSize int) ([]*model.SysRole, error) {
 	var res []*model.SysRole
-	err := core.DB.Limit(pageSize).Offset((page - 1) * pageSize).Find(&res).Error
+	err := s.DB.Limit(pageSize).Offset((page - 1) * pageSize).Find(&res).Error
 	if err != nil {
 		return nil, err
 	}
@@ -17,18 +25,18 @@ func (s *RoleService) FindAll(page, pageSize int) ([]*model.SysRole, error) {
 }
 func (s *RoleService) FindById(id uint) (*model.SysRole, error) {
 	var res *model.SysRole
-	err := core.DB.Where(id).First(&res).Error
+	err := s.DB.Where(id).First(&res).Error
 	if err != nil {
 		return nil, err
 	}
 	return res, nil
 }
 func (s *RoleService) Create(role *model.SysRole) error {
-	return core.DB.Create(&role).Error
+	return s.DB.Create(&role).Error
 }
 func (s *RoleService) Update(role *model.SysRole) error {
-	return core.DB.Updates(&role).Error
+	return s.DB.Updates(&role).Error
 }
 func (s *RoleService) Delete(id uint) error {
-	return core.DB.Where(id).Delete(&model.SysRole{}).Error
+	return s.DB.Where(id).Delete(&model.SysRole{}).Error
 }

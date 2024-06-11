@@ -2,6 +2,8 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
+	"gorm.io/gorm"
 	"net/http"
 	"worframe/pkg/auth/service"
 	"worframe/share/constant"
@@ -10,12 +12,12 @@ import (
 )
 
 type MenuController struct {
-	service service.MenuService
+	service *service.MenuService
 }
 
-func NewMenuController() *MenuController {
+func NewMenuController(zap *zap.Logger, db *gorm.DB) *MenuController {
 	return &MenuController{
-		service: service.MenuService{},
+		service: service.NewMenuService(zap, db),
 	}
 }
 func (ctrl *MenuController) GetAll(c *gin.Context) {
