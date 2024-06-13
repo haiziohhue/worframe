@@ -3,19 +3,23 @@ package service
 import (
 	"go.uber.org/zap"
 	"gorm.io/gorm"
+	"worframe/pkg/auth/core/iface"
 	"worframe/share/model"
 )
 
 type DeptService struct {
-	Logger *zap.Logger
+	Core   *iface.ICore
 	DB     *gorm.DB
+	Logger *zap.Logger
 }
 
-func NewDeptService(zap *zap.Logger, db *gorm.DB) *DeptService {
-	return &DeptService{
-		Logger: zap,
-		DB:     db,
+func NewDeptService(core iface.ICore) *DeptService {
+	var deptService = &DeptService{
+		Core:   &core,
+		DB:     core.GetDB(),
+		Logger: core.GetLog(),
 	}
+	return deptService
 }
 func (s *DeptService) FindAll(page, pageSize int) ([]*model.SysDept, error) {
 	var res []*model.SysDept

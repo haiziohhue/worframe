@@ -6,20 +6,21 @@ import (
 	"os"
 	"path/filepath"
 	"worframe/pkg/auth/config"
+	"worframe/pkg/auth/core/iface"
 )
 
-func (ac *AuthCore) initAuthConf() *AuthCore {
-	if ac.Env == "" {
-		ac.Env = "dev"
+func (ac *AuthCore) InitAuthConf() iface.ICore {
+	if ac.GetEnv() == "" {
+		ac.SetEnv("dev")
 	}
-	configFileName := fmt.Sprintf("%s.config.yaml", ac.Env)
-	configFilePath := filepath.Join(ac.WorkDir, "cfg", configFileName)
+	configFileName := fmt.Sprintf("%s.config.yaml", ac.GetEnv())
+	configFilePath := filepath.Join(ac.GetWorkDir(), "cfg", configFileName)
 	data, err := os.ReadFile(configFilePath)
 	if err != nil {
 		panic(err)
 	}
 	c := &config.AuthPackConfig{
-		Config: *ac.Conf,
+		Config: *ac.GetConf(),
 	}
 	err = yaml.Unmarshal(data, &c)
 	if err != nil {
@@ -27,4 +28,7 @@ func (ac *AuthCore) initAuthConf() *AuthCore {
 	}
 	ac.AuthConf = c
 	return ac
+}
+func (ac *AuthCore) GetAuthConf() *config.AuthPackConfig {
+	return ac.AuthConf
 }

@@ -3,17 +3,20 @@ package service
 import (
 	"go.uber.org/zap"
 	"gorm.io/gorm"
+	"worframe/pkg/auth/core/iface"
 	"worframe/share/model"
 )
 
 type MenuService struct {
-	Logger *zap.Logger
+	Core   *iface.ICore
 	DB     *gorm.DB
+	Logger *zap.Logger
 }
 
-func NewMenuService(zap *zap.Logger, db *gorm.DB) *MenuService {
-	return &MenuService{Logger: zap,
-		DB: db}
+func NewMenuService(core iface.ICore) *MenuService {
+	return &MenuService{Core: &core,
+		DB:     core.GetDB(),
+		Logger: core.GetLog()}
 }
 func (s *MenuService) FindAll(page, pageSize int) ([]*model.SysMenu, error) {
 	var res []*model.SysMenu

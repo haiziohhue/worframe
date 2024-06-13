@@ -6,6 +6,7 @@ import (
 	"gorm.io/gorm"
 	"log"
 	"worframe/share/config"
+	"worframe/share/core/iface"
 	"worframe/share/utils"
 )
 
@@ -14,28 +15,26 @@ type ShareApp struct {
 	DB      *gorm.DB
 	Redis   *redis.Pool
 	Logger  *zap.Logger
-	SLogger *zap.SugaredLogger
 	WorkDir string
-	Error   error
+	Err     error
 	Env     string
 }
 
 var Log *zap.SugaredLogger
 
-func NewApp(env string) (app *ShareApp) {
+func NewApp(env string) iface.ICore {
+	app := &ShareApp{}
 	if env == "" {
 		env = "dev"
 	}
-	str, err := utils.FindWorkDir()
+	app.Env = env
+	workDir, err := utils.FindWorkDir()
 	if err != nil {
-		return &ShareApp{
-			Error: err,
-		}
+		app.Err = err
+		return nil
 	}
-	log.Println("work dir", str)
-	return &ShareApp{
-		Conf:    initConfig(env, str),
-		Env:     env,
-		WorkDir: str,
-	}
+	app.WorkDir = workDir
+	log.Println("work dir", workDir)
+	app.Conf = initConfig(env, workDir)
+	return app
 }

@@ -2,14 +2,13 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	"go.uber.org/zap"
-	"gorm.io/gorm"
 	"worframe/pkg/auth/controller"
+	"worframe/pkg/auth/core/iface"
 )
 
-func RegisterRole(r *gin.Engine, logger *zap.Logger, db *gorm.DB) {
+func RegisterRole(r *gin.Engine, core iface.ICore) {
 	role := r.Group("/role")
-	ctrl := controller.NewRoleController(logger, db)
+	ctrl := controller.NewRoleController(core)
 	{
 		role.GET("/:id", ctrl.GetOne)
 		role.GET("", ctrl.GetAll)

@@ -2,9 +2,8 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
-	"go.uber.org/zap"
-	"gorm.io/gorm"
 	"net/http"
+	"worframe/pkg/auth/core/iface"
 	"worframe/pkg/auth/service"
 	"worframe/share/constant"
 	"worframe/share/model"
@@ -12,12 +11,12 @@ import (
 )
 
 type DeptController struct {
-	service *service.DeptService
+	service service.DeptService
 }
 
-func NewDeptController(zap *zap.Logger, db *gorm.DB) *DeptController {
+func NewDeptController(core iface.ICore) *DeptController {
 	return &DeptController{
-		service: service.NewDeptService(zap, db),
+		service: *service.NewDeptService(core),
 	}
 }
 func (ctrl *DeptController) GetAll(c *gin.Context) {

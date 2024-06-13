@@ -2,9 +2,8 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
-	"go.uber.org/zap"
-	"gorm.io/gorm"
 	"net/http"
+	"worframe/pkg/auth/core/iface"
 	"worframe/pkg/auth/service"
 	"worframe/share/constant"
 	"worframe/share/model"
@@ -15,9 +14,9 @@ type MenuController struct {
 	service *service.MenuService
 }
 
-func NewMenuController(zap *zap.Logger, db *gorm.DB) *MenuController {
+func NewMenuController(core iface.ICore) *MenuController {
 	return &MenuController{
-		service: service.NewMenuService(zap, db),
+		service: service.NewMenuService(core),
 	}
 }
 func (ctrl *MenuController) GetAll(c *gin.Context) {

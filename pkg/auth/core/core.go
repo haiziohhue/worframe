@@ -3,16 +3,20 @@ package core
 import (
 	"github.com/gin-gonic/gin"
 	"worframe/pkg/auth/config"
-	"worframe/share/core"
+	"worframe/pkg/auth/core/iface"
+	shareCoreIface "worframe/share/core/iface"
 )
 
 type AuthCore struct {
-	*core.ShareApp
+	shareCoreIface.ICore
 	Engine   *gin.Engine
 	AuthConf *config.AuthPackConfig
 }
 
-func NewAuthCore(app *core.ShareApp) *AuthCore {
-	AuthApp := &AuthCore{ShareApp: app}
-	return AuthApp.initAuthConf()
+func NewAuthCore(app shareCoreIface.ICore) iface.ICore {
+	AuthApp := &AuthCore{ICore: app}
+	return AuthApp.InitAuthConf()
+}
+func (ac *AuthCore) GetRawCore() *shareCoreIface.ICore {
+	return &ac.ICore
 }

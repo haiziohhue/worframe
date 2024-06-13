@@ -2,18 +2,32 @@ package core
 
 import (
 	"fmt"
-	"worframe/pkg/auth/server"
+	ginzap "github.com/gin-contrib/zap"
+	"github.com/gin-gonic/gin"
+	"time"
+	"worframe/pkg/auth/core/iface"
+	"worframe/pkg/auth/server/middleware"
+	"worframe/pkg/auth/server/router"
 )
 
 func (ac *AuthCore) Run() {
-	port := fmt.Sprintf(":%d", ac.Conf.Server.Port)
+	port := fmt.Sprintf(":%d", ac.GetConf().Server.Port)
 	err := ac.Engine.Run(port)
 	if err != nil {
-		ac.Error = err
+		ac.SetErr(err)
 		panic(err)
 	}
 }
-func (ac *AuthCore) InitEngine() *AuthCore {
-	ac.Engine = server.InitEngine(ac.Logger, ac.DB)
+func (ac *AuthCore) InitEngine() iface.ICore {
+	r := gin.New()
+	r.Use(ginzap.Ginzap(ac.GetLog(), time.DateTime, true), gin.Recovery())
+	r.Use(middleware.Response())
+	router.RegisterDept(r, ac)
+	router.RegisterRole(r, ac)
+	router.RegisterMenu(r, ac)
+	ac.Engine = r
 	return ac
+}
+func (ac *AuthCore) GetEngine() *gin.Engine {
+	return ac.Engine
 }

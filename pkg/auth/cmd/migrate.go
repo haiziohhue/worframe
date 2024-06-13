@@ -18,13 +18,13 @@ func main() {
 	app := authCore.
 		NewAuthCore(shareApp)
 
-	m := migrate.NewDBMigrate(app.DB)
+	m := migrate.NewDBMigrate(app.GetDB())
 
-	cs := service.NewCasbinService(service.NewCasbinCore(app.Conf.Casbin, app.Logger, app.Redis, app.DB))
-	err := cs.SqlUpdateFlow(app.DB)
+	cs := service.NewCasbinService(service.NewCasbinCore(app.GetConf().Casbin, app.GetLog(), app.GetRedis(), app.GetDB()))
+	err := cs.SqlUpdateFlow(app.GetDB())
 	if err != nil {
 		panic(err)
 	}
-	_ = m.DevEnvInit(shareApp.Logger)
+	_ = m.DevEnvInit(shareApp.GetLog())
 	return
 }

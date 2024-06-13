@@ -2,9 +2,8 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
-	"go.uber.org/zap"
-	"gorm.io/gorm"
 	"net/http"
+	"worframe/pkg/auth/core/iface"
 	"worframe/pkg/auth/service"
 	"worframe/share/constant"
 	"worframe/share/model"
@@ -15,9 +14,9 @@ type RoleController struct {
 	service *service.RoleService
 }
 
-func NewRoleController(zap *zap.Logger, db *gorm.DB) *RoleController {
+func NewRoleController(core iface.ICore) *RoleController {
 	return &RoleController{
-		service: service.NewRoleService(zap, db),
+		service: service.NewRoleService(core),
 	}
 }
 

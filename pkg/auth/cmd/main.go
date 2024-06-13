@@ -9,17 +9,15 @@ func main() {
 	shareApp := core.
 		NewApp("dev").InitPublicZap().InitDb().InitRedis()
 
-	if shareApp.Error != nil {
-		panic(shareApp.Error)
+	if shareApp.GetErr() != nil {
+		panic(shareApp.GetErr())
 	}
 
 	App := authCore.
 		NewAuthCore(shareApp).InitEngine()
 
-	if App.Error != nil {
-		panic(App.Error)
+	if App.GetErr() != nil {
+		panic(App.GetErr())
 	}
-
 	App.Run()
-
 }

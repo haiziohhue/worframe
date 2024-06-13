@@ -12,7 +12,7 @@ import (
 	shareUtils "worframe/share/utils"
 )
 
-func Casbin(app *core.ShareApp) gin.HandlerFunc {
+func CasbinMiddleware(app *core.ShareApp) gin.HandlerFunc {
 	m := modelBind(app.Conf.Casbin.ModelName)
 	redisAdapt, err := redisadapter.NewAdapterWithPool(app.Redis)
 	if err != nil {

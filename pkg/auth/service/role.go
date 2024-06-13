@@ -3,17 +3,20 @@ package service
 import (
 	"go.uber.org/zap"
 	"gorm.io/gorm"
+	"worframe/pkg/auth/core/iface"
 	"worframe/share/model"
 )
 
 type RoleService struct {
-	Logger *zap.Logger
+	Core   *iface.ICore
 	DB     *gorm.DB
+	Logger *zap.Logger
 }
 
-func NewRoleService(zap *zap.Logger, db *gorm.DB) *RoleService {
-	return &RoleService{Logger: zap,
-		DB: db}
+func NewRoleService(core iface.ICore) *RoleService {
+	return &RoleService{Core: &core,
+		DB:     core.GetDB(),
+		Logger: core.GetLog()}
 }
 func (s *RoleService) FindAll(page, pageSize int) ([]*model.SysRole, error) {
 	var res []*model.SysRole

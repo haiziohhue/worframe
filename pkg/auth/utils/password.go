@@ -1,15 +1,25 @@
 package utils
 
-import shareUtils "worframe/share/utils"
+import (
+	"golang.org/x/crypto/bcrypt"
+	shareUtils "worframe/share/utils"
+)
 
-func EncryptPassword(username, password string, salt string) string {
-	newStr := username + password + salt
-	newPassword, err := shareUtils.EncryptString(newStr)
+func EncryptPassword(password, salt string) string {
+	bytes, err := bcrypt.GenerateFromPassword([]byte(password+salt), bcrypt.DefaultCost)
 	if err != nil {
 		return ""
 	}
-	return newPassword
+	return string(bytes)
 }
+
 func SaltSpawn() string {
 	return shareUtils.GenerateSubId(6)
+}
+func ComparePassword(inputPwd, salt, target string) bool {
+	err := bcrypt.CompareHashAndPassword([]byte(target), []byte(inputPwd+salt))
+	if err != nil {
+		return false
+	}
+	return true
 }

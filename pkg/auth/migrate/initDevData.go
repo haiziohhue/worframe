@@ -30,63 +30,63 @@ func (m *DBMigrate) initDevData() error {
 func devDeptInit(db *gorm.DB) error {
 	depts := []*model.SysDept{
 		{
-			Model:    gorm.Model{ID: 1},
+			//Model:    gorm.Model{ID: 1},
 			DeptName: "Worframe",
 			OrderNum: 0,
 			Leader:   "海石花",
 			Phone:    "13700000000",
 			Email:    "test@test.com",
 		}, {
-			Model:    gorm.Model{ID: 2},
+			//Model:    gorm.Model{ID: 2},
 			DeptName: "管理部",
 			OrderNum: 1,
 			Leader:   "海石花",
 			Phone:    "13700000000",
 			Email:    "test@test.com",
 		}, {
-			Model:    gorm.Model{ID: 3},
+			//	Model:    gorm.Model{ID: 3},
 			DeptName: "项目部",
 			OrderNum: 2,
 			Leader:   "海石花",
 			Phone:    "13700000000",
 			Email:    "test@test.com",
 		}, {
-			Model:    gorm.Model{ID: 4},
+			//Model:    gorm.Model{ID: 4},
 			DeptName: "开发部",
 			OrderNum: 3,
 			Leader:   "海石花",
 			Phone:    "13700000000",
 			Email:    "test@test.com",
 		}, {
-			Model:    gorm.Model{ID: 5},
+			//Model:    gorm.Model{ID: 5},
 			DeptName: "市场部",
 			OrderNum: 4,
 			Leader:   "海石花",
 			Phone:    "13700000000",
 			Email:    "test@test.com",
 		}, {
-			Model:    gorm.Model{ID: 6},
+			//Model:    gorm.Model{ID: 6},
 			DeptName: "测试部",
 			OrderNum: 5,
 			Leader:   "海石花",
 			Phone:    "13700000000",
 			Email:    "test@test.com",
 		}, {
-			Model:    gorm.Model{ID: 7},
+			//Model:    gorm.Model{ID: 7},
 			DeptName: "运营部",
 			OrderNum: 6,
 			Leader:   "海石花",
 			Phone:    "13700000000",
 			Email:    "test@test.com",
 		}, {
-			Model:    gorm.Model{ID: 8},
+			//Model:    gorm.Model{ID: 8},
 			DeptName: "财务部",
 			OrderNum: 7,
 			Leader:   "海石花",
 			Phone:    "13700000000",
 			Email:    "test@test.com",
 		}, {
-			Model:    gorm.Model{ID: 9},
+			//Model:    gorm.Model{ID: 9},
 			DeptName: "人事部",
 			OrderNum: 1,
 			Leader:   "海石花",
@@ -143,8 +143,8 @@ func devUserInit(db *gorm.DB) error {
 	pwd := "123456"
 	user[0].Salt = utils.SaltSpawn()
 	user[1].Salt = utils.SaltSpawn()
-	user[0].Password = utils.EncryptPassword(user[0].UserName, pwd, user[0].Salt)
-	user[1].Password = utils.EncryptPassword(user[1].UserName, pwd, user[1].Salt)
+	user[0].Password = utils.EncryptPassword(pwd, user[0].Salt)
+	user[1].Password = utils.EncryptPassword(pwd, user[1].Salt)
 	return db.Save(user).Error
 }
 func devRoleInit(db *gorm.DB) error {

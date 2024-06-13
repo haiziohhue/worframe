@@ -5,27 +5,31 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"log"
+	"worframe/share/core/iface"
 )
 
-func (a *ShareApp) InitDb() *ShareApp {
-	if a.Conf == nil {
-		a.Error = fmt.Errorf("conf is nil, init database error")
-		return a
+func (app *ShareApp) InitDb() iface.ICore {
+	if app.Conf == nil {
+		app.Err = fmt.Errorf("conf is nil, init database error")
+		return app
 	}
 	dsn := fmt.Sprintf("host=%s user=%s port=%d dbname=%s password=%s sslmode=disable",
-		a.Conf.Postgres.Host, a.Conf.Postgres.User, a.Conf.Postgres.Port, a.Conf.Postgres.DB, a.Conf.Postgres.Pass)
+		app.Conf.Postgres.Host, app.Conf.Postgres.User, app.Conf.Postgres.Port, app.Conf.Postgres.DB, app.Conf.Postgres.Pass)
 	log.Println(dsn)
 	pgDb, err := gorm.Open(postgres.New(postgres.Config{
 		DSN:                  dsn,
 		PreferSimpleProtocol: true,
 	}))
-	if a.Conf.Postgres.Debug {
+	if app.Conf.Postgres.Debug {
 		pgDb = pgDb.Debug()
 	}
 	if err != nil {
-		a.Error = err
-		return a
+		app.Err = err
+		return app
 	}
-	a.DB = pgDb
-	return a
+	app.DB = pgDb
+	return app
+}
+func (app *ShareApp) GetDB() *gorm.DB {
+	return app.DB
 }
