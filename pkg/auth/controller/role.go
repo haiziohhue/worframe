@@ -32,7 +32,6 @@ func (ctrl *RoleController) GetAll(c *gin.Context) {
 		_ = c.Error(err).SetType(constant.RequestedResourceNotFound)
 	}
 	c.Set("response_data", res)
-	c.Next()
 }
 func (ctrl *RoleController) GetOne(c *gin.Context) {
 	var q types.IdParam

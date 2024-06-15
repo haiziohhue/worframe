@@ -11,6 +11,7 @@ type AuthCore struct {
 	shareCoreIface.ICore
 	Engine   *gin.Engine
 	AuthConf *config.AuthPackConfig
+	Repo     map[string]interface{}
 }
 
 func NewAuthCore(app shareCoreIface.ICore) iface.ICore {

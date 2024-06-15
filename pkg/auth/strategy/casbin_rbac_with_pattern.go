@@ -73,7 +73,11 @@ func rbacWithPattern(db *gorm.DB, Logger *zap.SugaredLogger) func() error {
 			if err != nil {
 				Logger.Warn(err)
 			}
-			tx.AutoMigrate(&gormadapter.CasbinRule{})
+			err = tx.AutoMigrate(&gormadapter.CasbinRule{})
+			if err != nil {
+				Logger.Error(err)
+				return err
+			}
 			err = tx.Save(&rules).Error
 			if err != nil {
 				Logger.Error(err)

@@ -1,37 +1,65 @@
 package controller
 
+import "C"
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
+	"net/http"
+	"worframe/pkg/auth/core/iface"
+	"worframe/pkg/auth/service"
 	"worframe/share/constant"
-	"worframe/share/types"
 )
 
 type AuthController struct {
+	AuthService service.AuthService
 }
 
-func (ctrl *AuthController) LoginByPassword(c *gin.Context) {
-	var data types.LoginReqBody
-	err := c.ShouldBindJSON(&data)
+func NewAuthController(core iface.ICore) AuthController {
+	Service, err := service.NewAuthService(&core)
 	if err != nil {
-		_ = c.Error(err).SetType(constant.InvalidBody)
+		panic(err)
 	}
-
+	return AuthController{
+		AuthService: *Service,
+	}
 }
-func (ctrl *AuthController) LoginByPhone(c *gin.Context) {
+func (ctrl *AuthController) LoginPkg() func(c *gin.Context) (interface{}, error) {
+	C := ctrl
+	return func(c *gin.Context) (interface{}, error) {
 
-}
-func (ctrl *AuthController) LoginByEmail(c *gin.Context) {
-
-}
-func (ctrl *AuthController) Logout(c *gin.Context) {
-
+		method, ok := c.GetQuery("method")
+		if !ok {
+			err := fmt.Errorf("invalid request")
+			_ = c.Error(err).SetType(constant.InvalidQuery)
+			return nil, err
+		}
+		j := service.LoginParams{}
+		err := c.ShouldBindJSON(&j)
+		if err != nil {
+			_ = c.Error(err).SetType(constant.InvalidBody)
+		}
+		jwtPayload, err := C.AuthService.Login(j, method)
+		if err != nil {
+			return nil, err
+		}
+		return jwtPayload, err
+	}
 }
 func (ctrl *AuthController) Register(c *gin.Context) {
-
-}
-func (ctrl *AuthController) ForgotPassword(c *gin.Context) {
-
-}
-func (ctrl *AuthController) SetPassword(c *gin.Context) {
-
+	param := service.LoginParams{}
+	err := c.ShouldBindJSON(&param)
+	if err != nil {
+		_ = c.Error(err).SetType(constant.InvalidBody)
+		return
+	}
+	method, ok := c.GetQuery("method")
+	if !ok {
+		method = "password"
+	}
+	err = ctrl.AuthService.Register(param, method)
+	if err != nil {
+		_ = c.Error(err).SetType(constant.InvalidQuery)
+		return
+	}
+	c.Status(http.StatusOK)
 }

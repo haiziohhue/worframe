@@ -8,6 +8,7 @@ import (
 	"worframe/pkg/auth/core/iface"
 	"worframe/pkg/auth/server/middleware"
 	"worframe/pkg/auth/server/router"
+	shareMiddleware "worframe/share/middleware"
 )
 
 func (ac *AuthCore) Run() {
@@ -22,6 +23,8 @@ func (ac *AuthCore) InitEngine() iface.ICore {
 	r := gin.New()
 	r.Use(ginzap.Ginzap(ac.GetLog(), time.DateTime, true), gin.Recovery())
 	r.Use(middleware.Response())
+	r.Use(shareMiddleware.JWTMiddleware(ac.GetRawCore()))
+	router.RegisterAuth(r, ac)
 	router.RegisterDept(r, ac)
 	router.RegisterRole(r, ac)
 	router.RegisterMenu(r, ac)

@@ -10,8 +10,11 @@ type ICore interface {
 	shareCoreIface.ICore
 	InitAuthConf() ICore
 	InitEngine() ICore
-	Run()
+	InitRepository() ICore
+
 	GetEngine() *gin.Engine
 	GetRawCore() *shareCoreIface.ICore
 	GetAuthConf() *config.AuthPackConfig
+	GetRepo(name string) (interface{}, error)
+	Run()
 }
