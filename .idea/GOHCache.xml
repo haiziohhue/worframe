@@ -328,6 +328,7 @@
         <entry key="casbinAuthorizer">
           <value>
             <set>
+              <option value="file://$PROJECT_DIR$/share/middleware/jwt.go" />
               <option value="file://$PROJECT_DIR$/share/middware/jwt.go" />
             </set>
           </value>
@@ -398,14 +399,10 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/controller/auth.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718283499676" />
+              <option name="lastModified" value="1718418437039" />
               <option name="schema">
                 <list>
                   <option value="AuthController" />
-                  <option value="LoginWithPasswordBody" />
-                  <option value="LoginWithSSOBody" />
-                  <option value="LoginWithMobileBody" />
-                  <option value="LoginMethod" />
                 </list>
               </option>
             </ScannedPath>
@@ -414,7 +411,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/controller/dept.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718160590326" />
+              <option name="lastModified" value="1718418599277" />
               <option name="schema">
                 <list>
                   <option value="DeptController" />
@@ -426,7 +423,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/controller/menu.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718250593436" />
+              <option name="lastModified" value="1718418599297" />
               <option name="schema">
                 <list>
                   <option value="MenuController" />
@@ -438,7 +435,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/controller/role.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718250595326" />
+              <option name="lastModified" value="1718418599337" />
               <option name="schema">
                 <list>
                   <option value="RoleController" />
@@ -476,7 +473,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/core/engine.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718370842405" />
+              <option name="lastModified" value="1718417410649" />
             </ScannedPath>
           </value>
         </entry>
@@ -504,7 +501,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/event/user.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718415809752" />
+              <option name="lastModified" value="1718415906913" />
             </ScannedPath>
           </value>
         </entry>
@@ -558,7 +555,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/repository/dept.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718370974538" />
+              <option name="lastModified" value="1718418599357" />
               <option name="schema">
                 <list>
                   <option value="DeptRepository" />
@@ -589,7 +586,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/repository/user.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718415809572" />
+              <option name="lastModified" value="1718416096634" />
               <option name="schema">
                 <list>
                   <option value="UserRepo" />
@@ -617,6 +614,13 @@
             </ScannedPath>
           </value>
         </entry>
+        <entry key="file://$PROJECT_DIR$/pkg/auth/server/router/auth.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1718418455479" />
+            </ScannedPath>
+          </value>
+        </entry>
         <entry key="file://$PROJECT_DIR$/pkg/auth/server/router/dept.go">
           <value>
             <ScannedPath>
@@ -641,11 +645,11 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/service/auth.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718372903445" />
+              <option name="lastModified" value="1718417518264" />
               <option name="schema">
                 <list>
                   <option value="LoginParams" />
-                  <option value="authService" />
+                  <option value="AuthService" />
                 </list>
               </option>
             </ScannedPath>
@@ -710,7 +714,7 @@
         <entry key="file://$PROJECT_DIR$/pkg/auth/strategy/casbin_rbac_with_pattern.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1718099337768" />
+              <option name="lastModified" value="1718418599317" />
             </ScannedPath>
           </value>
         </entry>
@@ -941,6 +945,18 @@
             </ScannedPath>
           </value>
         </entry>
+        <entry key="file://$PROJECT_DIR$/share/middleware/jwt.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1718417809626" />
+              <option name="schema">
+                <list>
+                  <option value="casbinAuthorizer" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
         <entry key="file://$PROJECT_DIR$/share/middware/casbin.go">
           <value>
             <ScannedPath>
@@ -1095,7 +1111,7 @@
         <entry key="auth_controller" value="AuthController" />
         <entry key="auth_core" value="AuthCore" />
         <entry key="auth_pack_config" value="AuthPackConfig" />
-        <entry key="auth_service" value="authService" />
+        <entry key="auth_service" value="AuthService" />
         <entry key="base_claims" value="BaseClaims" />
         <entry key="base_res" value="BaseRes" />
         <entry key="captcha" value="Captcha" />
