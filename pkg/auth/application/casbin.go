@@ -1,4 +1,4 @@
-package service
+package application
 
 import (
 	"fmt"
@@ -163,11 +163,11 @@ func (c *CasbinService) CheckFlow() (redisOk, postgresOk bool) {
 }
 func (c *CasbinService) SqlUpdateFlow(db *gorm.DB) error {
 	if err := c.postgresUpdateFormSql(db); err != nil {
-		c.logger.Error(constant.CASBINPOSTGRESUPDATEFIAL)
+		c.logger.Error(constant.CASBINPOSTGRESUPDATEFIAL, err)
 		return err
 	}
 	if err := c.redisUpdateFormPostgres(); err != nil {
-		c.logger.Error(constant.CASBINREDISUPDATEFAIL)
+		c.logger.Error(constant.CASBINREDISUPDATEFAIL, err)
 		return err
 	}
 	return nil

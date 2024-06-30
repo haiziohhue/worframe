@@ -5,7 +5,6 @@ import (
 	"gorm.io/gorm"
 	"testing"
 	"worframe/pkg/auth/migrate"
-	"worframe/pkg/auth/service"
 	"worframe/share/model"
 )
 
@@ -22,7 +21,7 @@ func TestAuthService(t *testing.T) {
 }
 func testDeptService(t *testing.T) {
 
-	ds := service.NewDeptService(testApp)
+	ds := application.NewDeptService(testApp)
 	t.Run("GetAll", func(t *testing.T) {
 		resp, err := ds.FindAll(1, 10)
 		if err != nil {
@@ -70,7 +69,7 @@ func testDeptService(t *testing.T) {
 }
 func testMenuService(t *testing.T) {
 
-	ds := service.NewMenuService(testApp)
+	ds := application.NewMenuService(testApp)
 	t.Run("GetAll", func(t *testing.T) {
 		resp, err := ds.FindAll(1, 10)
 		if err != nil {
@@ -118,7 +117,7 @@ func testMenuService(t *testing.T) {
 }
 func testRoleService(t *testing.T) {
 
-	ds := service.NewRoleService(testApp)
+	ds := application.NewRoleService(testApp)
 	t.Run("GetAll", func(t *testing.T) {
 		resp, err := ds.FindAll(1, 10)
 		if err != nil {

@@ -1,4 +1,4 @@
-package service
+package application
 
 import (
 	"go.uber.org/zap"

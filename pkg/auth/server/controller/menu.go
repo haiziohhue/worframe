@@ -4,19 +4,18 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"worframe/pkg/auth/core/iface"
-	"worframe/pkg/auth/service"
 	"worframe/share/constant"
 	"worframe/share/model"
 	"worframe/share/types"
 )
 
 type MenuController struct {
-	service *service.MenuService
+	service *application.MenuService
 }
 
 func NewMenuController(core iface.ICore) *MenuController {
 	return &MenuController{
-		service: service.NewMenuService(core),
+		service: application.NewMenuService(core),
 	}
 }
 func (ctrl *MenuController) GetAll(c *gin.Context) {

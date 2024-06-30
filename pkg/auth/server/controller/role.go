@@ -4,19 +4,18 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"worframe/pkg/auth/core/iface"
-	"worframe/pkg/auth/service"
 	"worframe/share/constant"
 	"worframe/share/model"
 	"worframe/share/types"
 )
 
 type RoleController struct {
-	service *service.RoleService
+	service *application.RoleService
 }
 
 func NewRoleController(core iface.ICore) *RoleController {
 	return &RoleController{
-		service: service.NewRoleService(core),
+		service: application.NewRoleService(core),
 	}
 }
 

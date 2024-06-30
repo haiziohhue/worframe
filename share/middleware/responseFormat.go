@@ -48,7 +48,7 @@ func Response() gin.HandlerFunc {
 			return
 		}
 		if c.Writer.Status() >= http.StatusOK && c.Writer.Status() < http.StatusMultipleChoices {
-			data, _ := c.Get("response_data")
+			data, _ := c.Get(constant.Response)
 			SuccessResponse(c, constant.SUCCESS, data)
 			return
 		}

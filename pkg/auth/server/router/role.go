@@ -2,8 +2,8 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	"worframe/pkg/auth/controller"
 	"worframe/pkg/auth/core/iface"
+	"worframe/pkg/auth/server/controller"
 )
 
 func RegisterRole(r *gin.Engine, core iface.ICore) {

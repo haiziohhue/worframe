@@ -3,20 +3,20 @@ package controller
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"worframe/pkg/auth/application"
 	"worframe/pkg/auth/core/iface"
-	"worframe/pkg/auth/service"
 	"worframe/share/constant"
 	"worframe/share/model"
 	"worframe/share/types"
 )
 
 type DeptController struct {
-	service service.DeptService
+	service application.DeptService
 }
 
 func NewDeptController(core iface.ICore) *DeptController {
 	return &DeptController{
-		service: *service.NewDeptService(core),
+		service: *application.NewDeptService(core),
 	}
 }
 func (ctrl *DeptController) GetAll(c *gin.Context) {

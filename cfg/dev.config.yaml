@@ -22,8 +22,8 @@ captcha:
   open-captcha-timeout:
 jwt:
   signKey: Js1U5GC0jclCFJHfLCq3LxViIw7U4/4n0i6dT2X2v80=
-  bufferTime: 1d
-  expiresTime: 1d
+  bufferTime: 24h
+  expiresTime: 24h
 casbin:
   modelName: rbacWithPattern
 zap:

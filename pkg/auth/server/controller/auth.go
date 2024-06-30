@@ -5,24 +5,25 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"worframe/pkg/auth/application"
 	"worframe/pkg/auth/core/iface"
-	"worframe/pkg/auth/service"
 	"worframe/share/constant"
 )
 
 type AuthController struct {
-	AuthService service.AuthService
+	AuthService application.AuthService
 }
 
-func NewAuthController(core iface.ICore) AuthController {
-	Service, err := service.NewAuthService(&core)
+func NewAuthController(core iface.ICore) *AuthController {
+	Service, err := application.NewAuthService(&core)
 	if err != nil {
 		panic(err)
 	}
-	return AuthController{
+	return &AuthController{
 		AuthService: *Service,
 	}
 }
+
 func (ctrl *AuthController) LoginPkg() func(c *gin.Context) (interface{}, error) {
 	C := ctrl
 	return func(c *gin.Context) (interface{}, error) {
@@ -33,7 +34,7 @@ func (ctrl *AuthController) LoginPkg() func(c *gin.Context) (interface{}, error)
 			_ = c.Error(err).SetType(constant.InvalidQuery)
 			return nil, err
 		}
-		j := service.LoginParams{}
+		j := application.LoginParams{}
 		err := c.ShouldBindJSON(&j)
 		if err != nil {
 			_ = c.Error(err).SetType(constant.InvalidBody)
@@ -46,7 +47,7 @@ func (ctrl *AuthController) LoginPkg() func(c *gin.Context) (interface{}, error)
 	}
 }
 func (ctrl *AuthController) Register(c *gin.Context) {
-	param := service.LoginParams{}
+	param := application.LoginParams{}
 	err := c.ShouldBindJSON(&param)
 	if err != nil {
 		_ = c.Error(err).SetType(constant.InvalidBody)
